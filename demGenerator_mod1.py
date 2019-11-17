@@ -170,7 +170,7 @@ def wgs84_do_puwg92(B_stopnie, L_stopnie):
 
 
 if __name__ == '__main__':
-    print("demGenerator - Module 1: determining the coordinates")
+    print("demGenerator - Module 1: determining the points' and bounds' coordinates")
     use_stdin = True
     try:
         config = open("demGenerator_config.txt", "r")
@@ -222,8 +222,7 @@ if __name__ == '__main__':
             if (n >= 47.73 and n <= 51.06 and s >= 47.73 and s <= 51.06 and w >= 12.09 and w <= 22.56 and e >= 12.09 and e <= 22.56):
                 for x_iter in range(div):
                     for y_iter in range(div):
-                        filename = "demGen_data/xy_" + str(div * x_iter + y_iter) + ".txt"
-                        data = open(filename, "w")
+                        data = open("demGen_data/xy_" + str(div * x_iter + y_iter) + ".txt", "w")
                         for i in range(int(x_iter * l / div), int((x_iter + 1) * l / div + 1)):
                             for j in range(int(y_iter * l / div), int((y_iter + 1) * l / div + 1)):
                                 wsp1 = s + i * dr / l # szerokość geograficzna B (układ WGS84)
@@ -231,14 +230,27 @@ if __name__ == '__main__':
                                 x_sjtsk, y_sjtsk = wgs84_to_sjtsk(wsp1, wsp2, 89.79)
                                 data.write(str(x_sjtsk) + " " + str(y_sjtsk) + "\n")
                         data.close()
+                data2 = open("demGen_data/xy_bounds.txt", "w")
+                data3 = open("demGen_data/bbox.txt", "w")
+                xy01 = wgs84_to_sjtsk(s, w, 89.79)
+                xy02 = wgs84_to_sjtsk(s, e, 89.79)
+                xy03 = wgs84_to_sjtsk(n, e, 89.79)
+                xy04 = wgs84_to_sjtsk(n, w, 89.79)
+                x00 = [xy01[0], xy02[0], xy03[0], xy04[0]]
+                y00 = [xy01[1], xy02[1], xy03[1], xy04[1]]
+                res = [min(x00), min(y00), max(x00), max(y00)]
+                del xy01, xy02, xy03, xy04, x00, y00
+                data2.write(str(res[0]) + " " + str(res[1]) + "\n" + str(res[0]) + " " + str(res[3]) + "\n" + str(res[2]) + " " + str(res[3]) + "\n" + str(res[2]) + " " + str(res[1]))
+                data3.write("BBOX=-%f,-%f,-%f,-%f" % (res[2], res[3], res[0], res[1]))
+                data2.close()
+                data3.close()
             else:
                 print("Coordinates out of range")
         elif (country == "PL"):
             if (n >= 48 and n <= 56 and s >= 48 and s <= 56 and w >= 13 and w <= 25 and e >= 13 and e <= 25):
                 for x_iter in range(div):
                     for y_iter in range(div):
-                        filename = "demGen_data/xy_" + str(div * x_iter + y_iter) + ".txt"
-                        data = open(filename, "w")
+                        data = open("demGen_data/xy_" + str(div * x_iter + y_iter) + ".txt", "w")
                         for i in range(int(x_iter * l / div), int((x_iter + 1) * l / div + 1)):
                             for j in range(int(y_iter * l / div), int((y_iter + 1) * l / div + 1)):
                                 wsp1 = s + i * dr / l # szerokość geograficzna B (układ WGS84)
@@ -246,6 +258,20 @@ if __name__ == '__main__':
                                 x_puwg, y_puwg = wgs84_do_puwg92(wsp1, wsp2)
                                 data.write(str(x_puwg) + " " + str(y_puwg) + "\n")
                         data.close()
+                data2 = open("demGen_data/xy_bounds.txt", "w")
+                data3 = open("demGen_data/bbox.txt", "w")
+                xy01 = wgs84_do_puwg92(s, w)
+                xy02 = wgs84_do_puwg92(s, e)
+                xy03 = wgs84_do_puwg92(n, e)
+                xy04 = wgs84_do_puwg92(n, w)
+                x00 = [xy01[0], xy02[0], xy03[0], xy04[0]]
+                y00 = [xy01[1], xy02[1], xy03[1], xy04[1]]
+                res = [min(x00), min(y00), max(x00), max(y00)]
+                del xy01, xy02, xy03, xy04, x00, y00
+                data2.write(str(res[1]) + " " + str(res[0]) + "\n" + str(res[3]) + " " + str(res[0]) + "\n" + str(res[3]) + " " + str(res[2]) + "\n" + str(res[1]) + " " + str(res[2]))
+                data3.write("BBOX=%f,%f,%f,%f" % (res[0], res[1], res[2], res[3]))
+                data2.close()
+                data3.close()
             else:
                 print("Coordinates out of range")
     else:
