@@ -1,6 +1,6 @@
 <img src="https://abload.de/img/104_exjkh3.png" align="center"/>
 Heightmap generator for Farming Simulator mod-maps. Supported countries: Poland and Czechia.
-<img src="https://abload.de/img/1025nj24.png" align="center"/>
+<img src="https://abload.de/img/window_overviewhyknv.png" align="center"/>
 
 # (English)
 To run these scripts you need the Python interpreter (3.5 or later is required; https://www.python.org/downloads/) and the Python packages: *Pillow* (https://pypi.org/project/Pillow/) and *tqdm* (https://pypi.org/project/tqdm/).
