@@ -170,7 +170,7 @@ def wgs84_do_puwg92(B_stopnie, L_stopnie):
 
 
 if __name__ == '__main__':
-    print("demGenerator - Module 1: determining the points' and bounds' coordinates")
+    print("demGenerator - Module 1: determining the points' coordinates")
     use_stdin = True
     try:
         config = open("demGenerator_config.txt", "r")
@@ -179,37 +179,37 @@ if __name__ == '__main__':
     else:
         print("Config file is loading...")
         string = config.read()
-        country, n, s, w, e, l, d, div = string.split()
+        string = string.split()
+        country = string[0]
+        n = float(string[1])
+        s = float(string[2])
+        w = float(string[3])
+        e = float(string[4])
+        l = int(string[5])
+        d = int(string[6])
+        div = int(string[7])
         print("Country: %s, B(min): %s, B(max): %s, L(min): %s, L(max): %s\nMap's dimensions: %s x %s, resolution: %s m/px, %s tile(s)" % (country, s, n, w, e, l, l, d, div))
         use_stdin = False
-        print("Data has been read, data processing in progress...")
     
     if (use_stdin):
         country = input("Country code (PL/CZ): ")
-        n = input("Map bounds' coordinates [decimal degrees]:\n- North: ")
-        s = input("- South: ")
-        w = input("- West: ")
-        e = input("- East: ")
-        l = input("Map edge length [meters]: ")
-        d = input("Resolution [meters per pixel]: ")
-        div = input("Tiles count (2^n): ")
-        print("Data processing in progress...")
+        n = float(input("Map bounds' coordinates [decimal degrees]:\n- North: "))
+        s = float(input("- South: "))
+        w = float(input("- West: "))
+        e = float(input("- East: "))
+        l = int(input("Map edge length [meters]: "))
+        d = int(input("Resolution [meters per pixel]: "))
+        div = int(input("Tiles count (2^n): "))
 
     while (country != "CZ" and country != "PL"):
         country = input("Re-enter the country code (PL/CZ): ")
-
-    n = float(n)
-    s = float(s)
-    w = float(w)
-    e = float(e)
-    l = int(l)
-    d = int(d)
-    div = int(div)
 
     while (math.sqrt(div) != int(math.sqrt(div))):
         div = input("Re-enter the tiles count (must be equal to 2^n): ")
     div = int(math.sqrt(div))
 
+    print("Data processing in progress...")
+    
     if (l % (d * div) == 0):
         if (not os.path.exists(os.getcwd() + "\\demGen_data")):
             os.mkdir(os.getcwd() + "\\demGen_data")
@@ -230,17 +230,6 @@ if __name__ == '__main__':
                                 x_sjtsk, y_sjtsk = wgs84_to_sjtsk(wsp1, wsp2, 89.79)
                                 data.write(str(x_sjtsk) + " " + str(y_sjtsk) + "\n")
                         data.close()
-                data2 = open("demGen_data/xy_bounds.txt", "w")
-                xy01 = wgs84_to_sjtsk(s, w, 89.79)
-                xy02 = wgs84_to_sjtsk(s, e, 89.79)
-                xy03 = wgs84_to_sjtsk(n, e, 89.79)
-                xy04 = wgs84_to_sjtsk(n, w, 89.79)
-                x00 = [xy01[0], xy02[0], xy03[0], xy04[0]]
-                y00 = [xy01[1], xy02[1], xy03[1], xy04[1]]
-                res = [min(x00), min(y00), max(x00), max(y00)]
-                del xy01, xy02, xy03, xy04, x00, y00
-                data2.write("-" + str(res[2]) + " -" + str(res[3]) + " -" + str(res[0]) + " -" + str(res[1]) + "\n\n" + str(res[0]) + " " + str(res[1]) + "\n" + str(res[0]) + " " + str(res[3]) + "\n" + str(res[2]) + " " + str(res[3]) + "\n" + str(res[2]) + " " + str(res[1]))
-                data2.close()
             else:
                 print("Coordinates out of range")
         elif (country == "PL"):
@@ -255,17 +244,6 @@ if __name__ == '__main__':
                                 x_puwg, y_puwg = wgs84_do_puwg92(wsp1, wsp2)
                                 data.write(str(x_puwg) + " " + str(y_puwg) + "\n")
                         data.close()
-                data2 = open("demGen_data/xy_bounds.txt", "w")
-                xy01 = wgs84_do_puwg92(s, w)
-                xy02 = wgs84_do_puwg92(s, e)
-                xy03 = wgs84_do_puwg92(n, e)
-                xy04 = wgs84_do_puwg92(n, w)
-                x00 = [xy01[0], xy02[0], xy03[0], xy04[0]]
-                y00 = [xy01[1], xy02[1], xy03[1], xy04[1]]
-                res = [min(x00), min(y00), max(x00), max(y00)]
-                del xy01, xy02, xy03, xy04, x00, y00
-                data2.write(str(res[0]) + " " + str(res[1]) + " " + str(res[2]) + " " + str(res[3]) + "\n\n" + str(res[1]) + " " + str(res[0]) + "\n" + str(res[3]) + " " + str(res[0]) + "\n" + str(res[3]) + " " + str(res[2]) + "\n" + str(res[1]) + " " + str(res[2]))
-                data2.close()
             else:
                 print("Coordinates out of range")
     else:
