@@ -231,7 +231,6 @@ if __name__ == '__main__':
                                 data.write(str(x_sjtsk) + " " + str(y_sjtsk) + "\n")
                         data.close()
                 data2 = open("demGen_data/xy_bounds.txt", "w")
-                data3 = open("demGen_data/bbox.txt", "w")
                 xy01 = wgs84_to_sjtsk(s, w, 89.79)
                 xy02 = wgs84_to_sjtsk(s, e, 89.79)
                 xy03 = wgs84_to_sjtsk(n, e, 89.79)
@@ -240,10 +239,8 @@ if __name__ == '__main__':
                 y00 = [xy01[1], xy02[1], xy03[1], xy04[1]]
                 res = [min(x00), min(y00), max(x00), max(y00)]
                 del xy01, xy02, xy03, xy04, x00, y00
-                data2.write(str(res[0]) + " " + str(res[1]) + "\n" + str(res[0]) + " " + str(res[3]) + "\n" + str(res[2]) + " " + str(res[3]) + "\n" + str(res[2]) + " " + str(res[1]))
-                data3.write("BBOX=-%f,-%f,-%f,-%f" % (res[2], res[3], res[0], res[1]))
+                data2.write("-" + str(res[2]) + " -" + str(res[3]) + " -" + str(res[0]) + " -" + str(res[1]) + "\n\n" + str(res[0]) + " " + str(res[1]) + "\n" + str(res[0]) + " " + str(res[3]) + "\n" + str(res[2]) + " " + str(res[3]) + "\n" + str(res[2]) + " " + str(res[1]))
                 data2.close()
-                data3.close()
             else:
                 print("Coordinates out of range")
         elif (country == "PL"):
@@ -259,7 +256,6 @@ if __name__ == '__main__':
                                 data.write(str(x_puwg) + " " + str(y_puwg) + "\n")
                         data.close()
                 data2 = open("demGen_data/xy_bounds.txt", "w")
-                data3 = open("demGen_data/bbox.txt", "w")
                 xy01 = wgs84_do_puwg92(s, w)
                 xy02 = wgs84_do_puwg92(s, e)
                 xy03 = wgs84_do_puwg92(n, e)
@@ -268,10 +264,8 @@ if __name__ == '__main__':
                 y00 = [xy01[1], xy02[1], xy03[1], xy04[1]]
                 res = [min(x00), min(y00), max(x00), max(y00)]
                 del xy01, xy02, xy03, xy04, x00, y00
-                data2.write(str(res[1]) + " " + str(res[0]) + "\n" + str(res[3]) + " " + str(res[0]) + "\n" + str(res[3]) + " " + str(res[2]) + "\n" + str(res[1]) + " " + str(res[2]))
-                data3.write("BBOX=%f,%f,%f,%f" % (res[0], res[1], res[2], res[3]))
+                data2.write(str(res[0]) + " " + str(res[1]) + " " + str(res[2]) + " " + str(res[3]) + "\n\n" + str(res[1]) + " " + str(res[0]) + "\n" + str(res[3]) + " " + str(res[0]) + "\n" + str(res[3]) + " " + str(res[2]) + "\n" + str(res[1]) + " " + str(res[2]))
                 data2.close()
-                data3.close()
             else:
                 print("Coordinates out of range")
     else:
