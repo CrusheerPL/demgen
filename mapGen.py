@@ -4,7 +4,7 @@
 import math
 import urllib.request
 
-print("imgGen - orthophotomap, topographic map and shading map downloading for a specific area")
+print("mapGen - orthophotomap, topographic map and shading map downloading for a specific area")
 use_stdin = True
 try:
     config = open("demGenerator_config.txt", "r")
