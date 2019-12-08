@@ -91,7 +91,6 @@ if __name__ == '__main__':
             print("Generating request URLs...")
             rqs = []
             jmax = int(math.ceil(len(we) / 210.0))
-            print(jmax)
             with tqdm.tqdm(total=jmax) as pbar:
                 for j in range(jmax):
                     url = 'https://services.gugik.gov.pl/nmt/?request=GetHbyXY&xy='
