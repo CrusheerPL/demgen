@@ -25,24 +25,21 @@ def getHeightCZ(data_tab):
     else:
         return 0
 
-def getHeightPL(data_tab):
-    z = 0
-    z_tries = 1
-    while (z == 0 and z_tries <= 3):
-        connerr = True
-        while (connerr):
-            try:
-                f = urllib.request.urlopen("https://services.gugik.gov.pl/nmt/?request=GetHbyXY&x=" + str(data_tab[0]) + "&y=" + str(data_tab[1]))
-            except:
-                continue
-            else:
-                if (f.getcode() == 200):
-                    connerr = False
-        z = float(f.read())
-        f.close()
-        if (z == 0):
-            z_tries += 1
-    return z
+def getHeightPL(rqUrl):
+    connerr = True
+    while (connerr):
+        try:
+            f = urllib.request.urlopen(rqUrl)
+        except:
+             continue
+        else:
+            if (f.getcode() == 200):
+                connerr = False
+    src = f.read()
+    src = str(src, 'utf-8')
+    src = src.split(',')
+    f.close()
+    return src
 
 if __name__ == '__main__':
     print("demGenerator - Module 2: elevation data downloading\nNOTE:\n- Internet connection required.\n- The script execution time depends on the connection speed and the amount of data to be processed.\n- Due to high data consumption, it is not recommended to run it when the tariff connection is set.")
@@ -91,9 +88,29 @@ if __name__ == '__main__':
             output.close()
             del we, wy
         elif (country == "PL"):
+            print("Generating request URLs...")
+            rqs = []
+            jmax = int(math.ceil(len(we) / 210.0))
+            print(jmax)
+            with tqdm.tqdm(total=jmax) as pbar:
+                for j in range(jmax):
+                    url = 'https://services.gugik.gov.pl/nmt/?request=GetHbyXY&xy='
+                    for k in range(210 * j, 210 * (j + 1)):
+                        if (k >= len(we)):
+                            break
+                        url += str(we[k][1]) + '%20' + str(we[k][0]) + ','
+                    rqs.append(url)
+                    pbar.update(1)
             print("Downloading data from 'services.gugik.gov.pl/nmt'...")
+            urllist = open('urllist.txt', 'w')
+            urllist.write(str(rqs))
+            urllist.close()
+            wy = []
             with Pool(64) as p:
-                wy = list(tqdm.tqdm(p.imap(getHeightPL, we), total=len(we)))
+                hstr = list(tqdm.tqdm(p.imap(getHeightPL, rqs), total=len(rqs)))
+            for j in range(len(hstr)):
+                for k in range(len(hstr[j])):
+                    wy.append(float(hstr[j][k]))
             output = open("demGen_data/h_%d.txt" % part, "w")
             for j in range(len(wy)):
                 output.write(str(wy[j]) + "\n") # dane uporządkowane
