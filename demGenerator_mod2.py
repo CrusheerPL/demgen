@@ -101,9 +101,6 @@ if __name__ == '__main__':
                     rqs.append(url)
                     pbar.update(1)
             print("Downloading data from 'services.gugik.gov.pl/nmt'...")
-            urllist = open('urllist.txt', 'w')
-            urllist.write(str(rqs))
-            urllist.close()
             wy = []
             with Pool(64) as p:
                 hstr = list(tqdm.tqdm(p.imap(getHeightPL, rqs), total=len(rqs)))
