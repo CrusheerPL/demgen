@@ -90,11 +90,11 @@ if __name__ == '__main__':
         elif (country == "PL"):
             print("Generating request URLs...")
             rqs = []
-            jmax = int(math.ceil(len(we) / 210.0))
+            jmax = int(math.ceil(len(we) / 200.0))
             with tqdm.tqdm(total=jmax) as pbar:
                 for j in range(jmax):
                     url = 'https://services.gugik.gov.pl/nmt/?request=GetHbyXY&xy='
-                    for k in range(210 * j, 210 * (j + 1)):
+                    for k in range(200 * j, 200 * (j + 1)):
                         if (k >= len(we)):
                             break
                         url += str(we[k][1]) + '%20' + str(we[k][0]) + ','
