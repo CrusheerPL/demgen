@@ -39,8 +39,8 @@ if (i > 0):
         i = 1
         r = 255
         while (dh > r): # dopóki różnica wysokości jest większa od jego zakresu, zwiększaj to drugie
-            i += 1
-            r = 255 * i
+            i *= 2
+            r = 256 * i - 1
         if (hmax > r or hmin < 0):
             dh2 = (r - hmin - hmax) / 2
         else:
