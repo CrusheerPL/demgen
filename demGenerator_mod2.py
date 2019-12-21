@@ -37,7 +37,6 @@ def getHeightPL(rqUrl):
                 connerr = False
     src = f.read()
     src = str(src, 'utf-8')
-    src = src.split(',')
     f.close()
     return src
 
@@ -105,12 +104,13 @@ if __name__ == '__main__':
             with Pool(64) as p:
                 hstr = list(tqdm.tqdm(p.imap(getHeightPL, rqs), total=len(rqs)))
             for j in range(len(hstr)):
-                for k in range(len(hstr[j])):
-                    wy.append(float(hstr[j][k]))
+                h2str = hstr[j].split(',')
+                for k in range(len(h2str)):
+                    wy.append(float(h2str[k]))
             output = open("demGen_data/h_%d.txt" % part, "w")
             for j in range(len(wy)):
                 output.write(str(wy[j]) + "\n") # dane uporządkowane
             output.close()
-            del we, wy
+            del we, wy, hstr
         print("Elevation data downloaded and saved in 'h_%d.txt'." % part)
     w = input("Press ENTER to close...")
