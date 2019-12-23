@@ -106,7 +106,8 @@ if __name__ == '__main__':
             for j in range(len(hstr)):
                 h2str = hstr[j].split(',')
                 for k in range(len(h2str)):
-                    wy.append(float(h2str[k]))
+                    if k < 200:
+                        wy.append(float(h2str[k]))
             output = open("demGen_data/h_%d.txt" % part, "w")
             for j in range(len(wy)):
                 output.write(str(wy[j]) + "\n") # dane uporządkowane
