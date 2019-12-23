@@ -26,8 +26,13 @@ if (l % 1024 == 0):
     if (not os.path.exists(os.getcwd() + "\\weightMaps")):
         os.mkdir(os.getcwd() + "\\weightMaps")
     print('Creating weight maps...')
-    for i in range(1, 5):
-        Image.new('L', (l, l)).save('weightMaps/grassRough0%s_weight.png' % i, 'PNG')
+    texNames = ["animalMud", "asphalt", "beachSandWet", "concrete", "forestGround", "forestGroundUS", "grass", "grassRough", "grassTown", "gravel", "mountainRock", "mountainRockDark", "plate", "plateDamaged", "riverStoneBank", "roughDirt"]
+    texNames2 = ["concreteDirt", "concreteGravel", "riverStoneBankWater", "riverStoneBankWaterEdge", "waterPuddle"]
+    for i in range(len(texNames)):
+        for j in range(1, 5):
+            Image.new('L', (l, l)).save('weightMaps/%s0%s_weight.png' % (texNames[i], j), 'PNG')
+    for i in range(len(texNames2)):
+        Image.new('L', (l, l)).save('weightMaps/%s01_weight.png' % texNames2[i], 'PNG')
     for i in range(div):
         for j in range(div):
             imid = div * i + j + 1
