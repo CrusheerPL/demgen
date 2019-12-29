@@ -27,7 +27,7 @@ Input data format:
 **Attention: B_max, B_min, L_min, L_max – WGS 84 coordinates.**
 
 ## Usage of demGenerator
-### Tutorial (EN subtitles available): (soon)
+### Tutorial (PL only): https://youtu.be/4WGZ4wCk-Es
 ### Timelapse (PL only): https://youtu.be/AZT8Ux5UpRE
 
 ## Credits:
@@ -67,7 +67,7 @@ Format danych wejściowych w tym pliku prezentuje się w następujący sposób:
 **Uwaga: B_max, B_min, L_min, L_max - współrzędne układu WGS 84.**
 
 ## Zastosowanie demGenerator
-### Tutorial: (link wkrótce)
+### Tutorial: https://youtu.be/4WGZ4wCk-Es
 ### Timelapse: https://youtu.be/AZT8Ux5UpRE
 
 ## Autorzy:
