@@ -32,6 +32,11 @@ if (use_stdin):
     e = float(input("- East: "))
     l = int(input("Map's edge length: "))
 
+if s > n:
+    n, s = s, n
+if w > e:
+    w, e = e, w
+
 while (country != "CZ" and country != "PL"):
     country = input("Re-enter the country code (PL/CZ): ")
 
