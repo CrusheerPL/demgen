@@ -186,13 +186,13 @@ if __name__ == '__main__':
         w = float(string[3])
         e = float(string[4])
         l = int(string[5])
-        d = int(string[6])
+        d = float(string[6])
         div = int(string[7])
         print("Country: %s, B(min): %s, B(max): %s, L(min): %s, L(max): %s\nMap's dimensions: %s x %s, resolution: %s m/px, %s tile(s)" % (country, s, n, w, e, l, l, d, div))
         use_stdin = False
     
     if (use_stdin):
-        country = input("Country code (PL/CZ): ")
+        country = input("Country code (PL/CZ/SK): ")
         n = float(input("Map bounds' coordinates [decimal degrees]:\n- North: "))
         s = float(input("- South: "))
         w = float(input("- West: "))
@@ -201,8 +201,8 @@ if __name__ == '__main__':
         d = int(input("Resolution [meters per pixel]: "))
         div = int(input("Tiles count (2^n): "))
 
-    while (country != "CZ" and country != "PL"):
-        country = input("Re-enter the country code (PL/CZ): ")
+    while (country != "CZ" and country != "PL" and country != "SK"):
+        country = input("Re-enter the country code (PL/CZ/SK): ")
 
     while (math.sqrt(div) != int(math.sqrt(div))):
         div = input("Re-enter the tiles count (must be equal to 2^n): ")
@@ -218,7 +218,7 @@ if __name__ == '__main__':
         dr = n - s # różnica szerokości geogr.
         dl = e - w # różnica długości geogr.
 
-        if (country == "CZ"):
+        if (country == 'CZ' or country == 'SK'):
             if (n >= 47.73 and n <= 51.06 and s >= 47.73 and s <= 51.06 and w >= 12.09 and w <= 22.56 and e >= 12.09 and e <= 22.56):
                 for x_iter in range(div):
                     for y_iter in range(div):
