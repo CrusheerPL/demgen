@@ -59,7 +59,7 @@ if (l % 1024 == 0):
             imid = str(i)
         el.write('\n    <File fileId="%d" filename="textures/terrain/ortho%s_diffuse.png"/>' % (fid, imid))
         el4 += '\n    <File fileId="%d" filename="mapDE/ortho%s_weight.png"/>' % (fid + 1, imid)
-        el2 += '\n        <Layer name="ortho%s" detailMapId="%d" normalMapId="100000" unitSize="1024" weightMapId="%d" blendContrast="0.2" distanceMapId="YY" attributes="0.208 0.11 0.056 1 2" priority="0"/>' % (imid, fid, fid + 1)
+        el2 += '\n        <Layer name="ortho%s" detailMapId="%d" normalMapId="100000" unitSize="1024" weightMapId="%d" blendContrast="0.2" distanceMapId="4" attributes="0.208 0.11 0.056 1 2" priority="0"/>' % (imid, fid, fid + 1)
         fid += 2
     el.write(el4 + '\n    ...\n  </Files>\n\n  <Scene>\n    ...\n    <TerrainTransformGroup>\n      <Layers>\n        ...' + el2 + '\n        ...\n      </Layers>\n    </TerrainTransformGroup>\n    ...\n  </Scene>')
     el.close()
