@@ -25,7 +25,7 @@ else:
 
 tiles = []
 for i in range(div):
-    if os.path.exists(os.getcwd() + "\\demGen_data\\xy_%d.txt" % i):
+    if os.path.exists(os.getcwd() + "\\demGen_data\\h_%d.txt" % i):
         tiles.append(i)
         
 print("Count of 'h_*.txt' files: %d." % len(tiles))
