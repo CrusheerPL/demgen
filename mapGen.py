@@ -61,7 +61,7 @@ else:
             if (country == "CZ"):
                 url = "https://geoportal.cuzk.cz/WMS_ORTOFOTO_PUB/service.svc/get?LAYERS=GR_ORTFOTORGB&TRANSPARENT=FALSE&FORMAT=image%2Fpng&VERSION=1.3.0&EXCEPTIONS=XML&SERVICE=WMS&REQUEST=GetMap&STYLES=&CRS=EPSG%3A4326&_OLSALT=0.031478753454327824&BBOX=" + str(x1) + "," + str(y1) + "," + str(x2) + "," + str(y2) + "&WIDTH=2000&HEIGHT=2000"
             else:
-                url = "http://mapy.geoportal.gov.pl/wss/service/img/guest/ORTO_TIME/MapServer/WMSServer?REQUEST=GetMap&TRANSPARENT=TRUE&FORMAT=image%2Fjpeg&VERSION=1.3.0&LAYERS=Raster&STYLES=&EXCEPTIONS=xml&TIME=2020-01-01T00%3A00%3A00.000%2B01%3A00&BBOX=" + str(x1) + "," + str(y1) + "," + str(x2) + "," + str(y2) + "&CRS=EPSG%3A4326&WIDTH=2048&HEIGHT=2048&SERVICE=WMS"
+                url = "http://mapy.geoportal.gov.pl/wss/service/img/guest/ORTO_TIME/MapServer/WMSServer?REQUEST=GetMap&TRANSPARENT=FALSE&FORMAT=image%2Fpng&VERSION=1.3.0&LAYERS=Raster&STYLES=&EXCEPTIONS=xml&TIME=2020-01-01T00%3A00%3A00.000%2B01%3A00&BBOX=" + str(x1) + "," + str(y1) + "," + str(x2) + "," + str(y2) + "&CRS=EPSG%3A4326&WIDTH=2048&HEIGHT=2048&SERVICE=WMS"
             ortos.append(url)
             connerr = True
             while (connerr):
