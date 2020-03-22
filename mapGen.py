@@ -40,6 +40,9 @@ if w > e:
 while (country != "CZ" and country != "PL"):
     country = input("Re-enter the country code (PL/CZ): ")
 
+if country == 'CZ':
+    from PIL import Image
+
 if (math.log2(l) != int(math.log2(l))):
     print("Error: map's edge length must be equal 2^n")
 else:
