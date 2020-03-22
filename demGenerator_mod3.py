@@ -52,19 +52,26 @@ if (i > 0):
         print("Tiles count: %d, DEM size: (%d x %d) px\nDEM generation in progress..." % (len(heights), ltot, ltot))
 
         dem = Image.new("I", (ltot, ltot))
+        dem8 = Image.new("RGB", (ltot, ltot))
         d = ImageDraw.Draw(dem)
+        d8 = ImageDraw.Draw(dem8)
 
         for i in range(pc):
             for j in range(pc):
                 for k in range(len(heights[pc * i + j])):
-                    if (i == 0 and k < l):
-                        d.point((j * (l - 1) + (k % l), ltot - (i * (l - 1) + int(k / l)) - 1), round((heights[pc * i + j][k] + dh2) * 65535 / r))
-                    if (j == 0 and k % l == 0):
-                        d.point((j * (l - 1) + (k % l), ltot - (i * (l - 1) + int(k / l)) - 1), round((heights[pc * i + j][k] + dh2) * 65535 / r))
-                    if (k >= l and k % l != 0):
-                        d.point((j * (l - 1) + (k % l), ltot - (i * (l - 1) + int(k / l)) - 1), round((heights[pc * i + j][k] + dh2) * 65535 / r))
-        dem.save("demGen_data/map_dem.png", "PNG")
+                    if (i == 0 and k < l) or (j == 0 and k % l == 0) or (k >= l and k % l != 0):
+                        h2 = heights[pc * i + j][k] + dh2
+                        d.point((j * (l - 1) + (k % l), ltot - (i * (l - 1) + int(k / l)) - 1), round(h2 * 65535 / r))
+                        demR = math.floor(h2)
+                        demG = round(demR + (h2 - demR) * 256)
+                        if demG > 255:
+                            demR += 1
+                            demG -= 255
+                        d8.point((j * (l - 1) + (k % l), ltot - (i * (l - 1) + int(k / l)) - 1), (demR, demG, 0))
+        dem.save("demGen_data/map_dem_16.png", "PNG")
+        dem8.save("demGen_data/map_dem_8.png", "PNG")
         dem.close()
+        dem8.close()
         print("DEM generated and saved")
     else:
         print("Invalid 'h_*.txt' files count! Is: %d. Should be: %d." % (len(heights), math.pow(2, math.floor(math.log2(len(heights))))))
