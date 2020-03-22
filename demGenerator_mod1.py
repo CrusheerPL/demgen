@@ -188,7 +188,6 @@ if __name__ == '__main__':
         l = int(string[5])
         d = float(string[6])
         div = int(string[7])
-        print("Country: %s, B(min): %s, B(max): %s, L(min): %s, L(max): %s\nMap's dimensions: %s x %s, resolution: %s m/px, %s tile(s)" % (country, s, n, w, e, l, l, d, div))
         use_stdin = False
     
     if (use_stdin):
@@ -205,6 +204,8 @@ if __name__ == '__main__':
         n, s = s, n
     if w > e:
         w, e = e, w
+
+    print("Country: %s, B(min): %s, B(max): %s, L(min): %s, L(max): %s\nMap's dimensions: %s x %s, resolution: %s m/px, %s tile(s)" % (country, s, n, w, e, l, l, d, div))
 
     while (country != "CZ" and country != "PL" and country != "SK"):
         country = input("Re-enter the country code (PL/CZ/SK): ")
