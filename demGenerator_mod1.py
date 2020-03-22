@@ -201,6 +201,11 @@ if __name__ == '__main__':
         d = int(input("Resolution [meters per pixel]: "))
         div = int(input("Tiles count (2^n): "))
 
+    if s > n:
+        n, s = s, n
+    if w > e:
+        w, e = e, w
+
     while (country != "CZ" and country != "PL" and country != "SK"):
         country = input("Re-enter the country code (PL/CZ/SK): ")
 
