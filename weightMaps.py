@@ -29,6 +29,9 @@ if (l % 1024 == 0):
     div = int(l / 1024)
     if (not os.path.exists(os.getcwd() + "\\weightMaps")):
         os.mkdir(os.getcwd() + "\\weightMaps")
+
+    if fs != '1':
+        l = int(l/2)
     
     print('Creating weight maps...')
     if fs == '1':
@@ -57,8 +60,12 @@ if (l % 1024 == 0):
                 imid = str(imid)
             wm = Image.new('L', (l, l))
             d = ImageDraw.Draw(wm)
-            for m in range(1024 * (div - i), 1024 * (div - i - 1), -1):
-                for n in range(1024 * j, 1024 * j + 1024):
+            if fs == '1':
+                dim = 1024
+            else:
+                dim = 512
+            for m in range(dim * (div - i), dim * (div - i - 1), -1):
+                for n in range(dim * j, dim * j + dim):
                     d.point((n, m - 1), 255)
             wm.save('weightMaps/ortho%s_weight.png' % imid, 'PNG')
     
