@@ -68,7 +68,7 @@ if (i > 0):
                             demR += 1
                             demG -= 255
                         d8.point((j * (l - 1) + (k % l), ltot - (i * (l - 1) + int(k / l)) - 1), (demR, demG, 0))
-        dem.save("demGen_data/map_dem_16.png", "PNG")
+        dem.save("demGen_data/map_dem.png", "PNG")
         dem8.save("demGen_data/map_dem_8.png", "PNG")
         dem.close()
         dem8.close()
