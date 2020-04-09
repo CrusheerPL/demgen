@@ -97,7 +97,7 @@ if __name__ == '__main__':
                         if country == 'CZ':
                             url = 'https://ags.cuzk.cz/arcgis2/rest/services/dmr5g/ImageServer/getSamples?geometry=%7Bpoints%3A%5B'
                         elif country == 'PL':
-                            url = 'https://services.gugik.gov.pl/nmt/?request=GetHbyXY&xy='
+                            url = 'http://services.gugik.gov.pl/nmt/?request=GetHbyXY&x={}&y={}'
                         for k in range(int(jm) * j, int(jm) * (j + 1)):
                             if k >= len(we):
                                 break
@@ -106,7 +106,7 @@ if __name__ == '__main__':
                                 if k < jm * (j + 1) - 1:
                                     url += '%2C'
                             elif country == 'PL':
-                                url += str(we[k][1]) + '%20' + str(we[k][0]) + ','
+                                url = url.format(str(we[k][1]), str(we[k][0])
                         if country == 'CZ':
                             url += '%5D%2CspatialReference%3A%7Bwkid%3A5514%7D%7D&geometryType=esriGeometryMultipoint&sampleDistance=&sampleCount=&mosaicRule=&pixelSize=&returnFirstValueOnly=false&f=pjson'
                         rqs.append(url)
