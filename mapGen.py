@@ -3,7 +3,7 @@
 
 import math
 
-print("mapGen - orthophotomaps, topographic maps and terrain shading maps downloading for a specific area")
+print("mapGen - orthophotomaps and terrain shading maps downloading for a specific area")
 use_stdin = True
 try:
     config = open("demGenerator_config.txt", "r")
