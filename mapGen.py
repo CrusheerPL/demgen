@@ -71,7 +71,7 @@ else:
             elif country == 'SK':
                 url = 'https://zbgis.skgeodesy.sk/zbgis/rest/services/Ortofoto/MapServer/export?dpi=96&transparent=true&format=png32&layers=show%3A5%2C6&bbox=' + str(y1) + "," + str(x1) + "," + str(y2) + "," + str(x2) + '&bboxSR=4326&imageSR=102100&size=2043%2C2048&f=image'
             else:
-                url = "http://mapy.geoportal.gov.pl/wss/service/img/guest/ORTO_TIME/MapServer/WMSServer?REQUEST=GetMap&TRANSPARENT=FALSE&FORMAT=image%2Fpng&VERSION=1.3.0&LAYERS=Raster&STYLES=&EXCEPTIONS=xml&TIME=2020-01-01T00%3A00%3A00.000%2B01%3A00&BBOX=" + str(x1) + "," + str(y1) + "," + str(x2) + "," + str(y2) + "&CRS=EPSG%3A4326&WIDTH=2048&HEIGHT=2048&SERVICE=WMS"
+                url = 'https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime?REQUEST=GetMap&TRANSPARENT=TRUE&FORMAT=image%2Fpng&VERSION=1.1.1&LAYERS=Raster&STYLES=&EXCEPTIONS=xml&TIME=2021-12-01T00%3A00%3A00.000%2B01%3A00&BBOX=' + str(y1) + "," + str(x1) + "," + str(y2) + "," + str(x2) + '&SRS=EPSG%3A4326&WIDTH=2048&HEIGHT=2048&SERVICE=WMS'
             ortos.append(url)
             connerr = True
             while connerr:
@@ -118,5 +118,5 @@ else:
         urllist.write('\nTerrain shading maps:\n')
         for i in range(len(shads)):
         	urllist.write(shads[i] + '\n')
-        urllist.close()
+    urllist.close()
 w = input("Press ENTER to close...")
