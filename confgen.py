@@ -22,6 +22,8 @@ coordscnf = []
 for c in coords:
     cl = c.childNodes[0].nodeValue
     cl = cl.splitlines()
+    if len(cl) == 1:
+        cl = cl[0].split()
     xs, ys = [], []
     for i in range(len(cl)):
         if cl[i] != '':
