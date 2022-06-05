@@ -1,4 +1,4 @@
-<img src="https://abload.de/img/demgenmmk5t.png" align="center"/>
+<img src="https://abload.de/img/demgenxkkx4.png" align="center"/>
 <img src="https://abload.de/img/window_overviewhyknv.png" align="center"/>
 
 # (English – sorry for any mistakes)
@@ -26,14 +26,12 @@ Input data format:
 - tls = total tiles count (always must be equal to 4 ^ n)
 **Attention: B_max, B_min, L_min, L_max – WGS 84 coordinates.**
 
-## Usage of demGenerator
-### Tutorial (PL only): https://youtu.be/4WGZ4wCk-Es
-### Timelapse (PL only): https://youtu.be/AZT8Ux5UpRE
+## How to use (tutorial): see Wiki tab
 
 ## Credits:
 - **WGS84 -> PUWG 1992 converter (C++ function – source: http://www.szymanski-net.eu/programy.html):** Zbigniew Szymański (z.szymanski@szymanski-net.eu)
 - **WGS84 -> S-JTSK converter (JavaScript function – source: https://www.pecina.cz/krovak.html):** Tomáš Pecina (tomas@pecina.cz)
-- **functions translation into Python + modules 1, 2, 3 + _mapGen.py_ and _weightMaps.py_:**: RusheerPL
+- **functions translation into Python + modules 1, 2, 3 + _mapGen.py_ and _weightMaps.py_:**: crpl
 
 ### This is a free software. You can modify its code as well as copy the content of this repository to various file hosts, if you indicate the original author and the original source. If you encountered a problem with this software – please create a new topic in the *Issues* tab.
 
@@ -66,12 +64,10 @@ Format danych wejściowych w tym pliku prezentuje się w następujący sposób:
 
 **Uwaga: B_max, B_min, L_min, L_max - współrzędne układu WGS 84.**
 
-## Zastosowanie demGenerator
-### Tutorial: https://youtu.be/4WGZ4wCk-Es
-### Timelapse: https://youtu.be/AZT8Ux5UpRE
+## Jak korzystać (poradnik): patrz zakładka Wiki
 
 ## Autorzy:
 - **funkcja do przeliczania współrzędnych WGS84 -> PUWG 1992** – oryginalny kod w C++ (z: http://www.szymanski-net.eu/programy.html): Zbigniew Szymański (z.szymanski@szymanski-net.eu)
 - **funkcja do przeliczania współrzędnych WGS84 -> S-JTSK** – oryginalny kod w JavaScript (z: https://www.pecina.cz/krovak.html): Tomáš Pecina (tomas@pecina.cz)
-- **przekład funkcji na język Python + moduły 1, 2, 3 + _mapGen.py_ i _weightMaps.py_:** RusheerPL
+- **przekład funkcji na język Python + moduły 1, 2, 3 + _mapGen.py_ i _weightMaps.py_:** crpl
 ### Oprogramowanie darmowe. Wszelkie modyfikacje dozwolone, tak samo jak i kopiowanie zawartości tego repozytorium do różnych hostingów plików, pod warunkiem wskazania oryginalnego autora i źródła. W razie wystąpienia problemów z działaniem oprogramowania – proszę o założenie nowego tematu w zakładce *Issues*.
