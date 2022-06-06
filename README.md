@@ -1,4 +1,4 @@
-<img src="https://abload.de/img/demgenxkkx4.png" align="center"/>
+<img src="https://abload.de/img/demgen09j6o.png" align="center"/>
 <img src="https://abload.de/img/window_overviewhyknv.png" align="center"/>
 
 # (English – sorry for any mistakes)
