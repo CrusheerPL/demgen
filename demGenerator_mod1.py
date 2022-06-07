@@ -169,7 +169,7 @@ def wgs84_do_puwg92(B_stopnie, L_stopnie):
 
 if __name__ == '__main__':
     if locale.getdefaultlocale()[0] == 'pl_PL':
-        lang = ['demGenerator - skrypt 1/3: wyliczanie współrzędnych punktów', 'Nie można wczytać pliku konfiguracyjnego - wprowadź dane ręcznie.', 'Wczytywanie pliku konfiguracyjnego...', 'Kraj (PL/CZ/SK): ', 'Współrzędne granic mapy [w stopniach dziesiętnych]:\n- Północ: ', '- Południe: ', '- Zachód: ', '- Wschód:', 'Wymiary mapy [m]: ', 'Rozdzielczość terenu [m/px]: ',
+        lang = ['demGenerator - skrypt 1/3: wyliczanie współrzędnych punktów', 'Nie można wczytać pliku konfiguracyjnego - wprowadź dane ręcznie.', 'Wczytywanie pliku konfiguracyjnego...', 'Kraj (PL/CZ/SK): ', 'Współrzędne granic mapy [w stopniach dziesiętnych]:\n- Północ: ', '- Południe: ', '- Zachód: ', '- Wschód: ', 'Wymiary mapy [m]: ', 'Rozdzielczość terenu [m/px]: ',
                 'Ilość części: ', 'Kraj: %s, B(min): %s, B(max): %s, L(min): %s, L(max): %s\nWymiary mapy: %s x %s, rozdzielczość terenu: %s m/px, %s część(ci)', 'Przetwarzanie w toku...', 'Uwaga: współrzędne poza zakresem', 'Uwaga: nieprawidłowe dane wejściowe (wymiary mapy lub rozdzielczość terenu)', 'Wciśnij ENTER, aby zamknąć...']
     else:
         lang = ["demGenerator - script 1/3: points' coordinates calculation", "Can't load the config file - you must enter your data manually.", 'Config file is loading...', 'Country (PL/CZ/SK): ', "Map bounds' coordinates [decimal degrees]:\n- North: ", '- South: ', '- West: ', '- East: ', 'Map dimensions [meters]: ', 'Terrain resolution [meters per pixel]: ',
