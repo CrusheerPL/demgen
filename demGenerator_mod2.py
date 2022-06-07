@@ -4,23 +4,20 @@
 import platform
 from multiprocessing import Pool
 from pathlib import Path
-import urllib.request
-import math
-import tqdm
-import ast
+import requests, math, tqdm, ast, locale
 
 def openUrl(url):
     connerr = True
     while (connerr):
         try:
-            f = urllib.request.urlopen(url)
+            f = requests.get(url)
         except:
             continue
         else:
-            if (f.getcode() == 200):
+            if (f.status_code == 200):
                 connerr = False
-        s = str(f.read(), 'utf-8')
-        f.close()
+        s = str(f.content, 'utf-8')
+        del f
     return s
     
 def getHeightCZ(rqUrl):
@@ -31,31 +28,46 @@ def getHeightCZ(rqUrl):
     return s
     
 if __name__ == '__main__':
+    if locale.getdefaultlocale()[0] == 'pl_PL':
+        lang = ['demGenerator - skrypt 2/3: pobieranie danych wysokościowych\nUWAGA:\n- Wymagane połączenie internetowe.\n- Czas wykonywania tego skryptu zależy od prędkości połączenia i ilości danych do przetworzenia.\n- Uruchamianie tego skryptu nie jest zalecane przy ustawionym połączeniu taryfowym.',
+                'Nie można wczytać pliku konfiguracyjnego\nKraj (PL/CZ): ', 'Ilość części (kafelków): ', 'Wczytywanie pliku konfiguracyjnego...', 'Kraj: %s', 'Kraj (PL/CZ): ', 'Pobrać dane dla wszystkich kafelków? (y/n): ', 'Nr kafelka: ', "Nie znaleziono pliku 'xy_%d.txt'\nNr kafelka: ", "\nWspółrzędne wczytane z pliku 'xy_%d.txt'",
+                "Uwaga: nieprawidłowa ilość danych wejściowych! Jest: %d. Powinno być: %d. Sprawdź zawartość pliku 'xy_%d.txt' w celu poprawienia błędów.", 'Wymiary kafelka: (%d x %d) px', 'Generowanie adresów z zapytaniami...', 'Serwer pobierania danych: %s', 'Pobieranie danych - ta operacja może zająć trochę czasu...',
+                'Uwaga (debug): nieprawidłowa ilość punktów - sprawdź zapytanie #%d', "Dane pobrano i zapisano do pliku 'h_%d.txt'", 'Ten skrypt nie wspiera Pythona w wersji %s.%s.%s. Uruchom go w 3.5 - 3.7.', 'Wciśnij ENTER, aby zamknąć...']
+    else:
+        lang = ['demGenerator - script 2/3: elevation data downloading\nNOTE:\n- Internet connection required.\n- The script execution time depends on the connection speed and the amount of data to be processed.\n- Running this script with enabled tariff connection is not recommended.',
+                "Can't load the config file\nCountry (PL/CZ): ", 'Tiles count: ', 'Config file is loading...', 'Country: %s', 'Country (PL/CZ): ', 'Download data for all tiles? (y/n): ', 'Tile number: ', "'xy_%d.txt' not found\nTile number: ", "\nCoordinates read from 'xy_%d.txt'",
+                "Warning: incorrect count of input data! Is: %d. Should be: %d. Check the 'xy_%d.txt' file content for errors correction.", 'Tile size: (%d x %d) px', 'Generating query URLs...', 'Data downloading server: %s', 'Downloading data - this operation may take some time...',
+                'Warning (debug): insufficient number of points – check query #%d', "Data downloaded and saved to 'h_%d.txt'", 'This script has no support for Python %s.%s.%s. Run it in the Python 3.5 - 3.7 environment.', 'Press ENTER to close...']
     ver = platform.python_version_tuple()
     if (ver[0] == '3' and ver[1] >= '5' and ver[1] <= '7'):
-        print("demGenerator - Module 2: elevation data downloading\nNOTE:\n- Internet connection required.\n- The script execution time depends on the connection speed and the amount of data to be processed.\n- Due to high data consumption, it is not recommended to run it when the tariff connection is set.")
+        print(lang[0])
         try:
             config = open("demGenerator_config.txt", "r")
         except:
-            country = input("Can't load the config file\nCountry code (PL/CZ): ")
-            div = int(input("Tiles count: "))
+            country = input(lang[1])
+            div = int(input(lang[2]))
         else:
-            print("Config file is loading...")
+            print(lang[3])
             cnf = config.read().split()
             country, div = cnf[0], int(cnf[7])
-            print("Country: %s" % country)
+            print(lang[4] % country)
         while (country != "CZ" and country != "PL"):
-            country = input("Re-enter the country code (PL/CZ): ")
+            country = input(lang[5])
+        
+        if country == 'PL':
+            print(lang[13] % 'services.gugik.gov.pl/nmt')
+        else:
+            print(lang[13] % 'ags.cuzk.cz/arcgis2/rest/services/dmr5g/ImageServer')
             
         tiles = []
         alltiles = '0'
         
         while not alltiles.isalpha() or (alltiles.isalpha() and (alltiles.lower() != 'y' and alltiles.lower() != 'n')):
-            alltiles = input("Do you want to process all 'xy_*.txt' files from 'demGen_data' directory? (y/n): ")
+            alltiles = input(lang[6])
         if alltiles.lower() == 'n':
-            tile = int(input("Tile number: "))
+            tile = int(input(lang[7]))
             while not Path("demGen_data/xy_%d.txt" % tile).exists():
-                tile = int(input("'xy_%d.txt' doesn't exist - re-enter the tile number: " % tile))
+                tile = int(input(lang[8] % tile))
             tiles.append(tile)
         else:
             for i in range(div):
@@ -75,17 +87,17 @@ if __name__ == '__main__':
                 else:
                     break
             data.close()
-            print("\nCoordinates were read from 'xy_%d.txt'" % part)
+            print(lang[9] % part)
             l = int(math.floor(math.sqrt(i)))
             if math.pow(l, 2) != i:
-                print("Incorrect count of input data! Is: %d. Should be: %d. Check the 'xy_%d.txt' file ontent and correct the mistakes." % (i, math.pow(l, 2), part))
+                print(lang[10] % (i, math.pow(l, 2), part))
                 del we
             else:
-                print("Tile size: (%d x %d) px" % (l, l))
+                print(lang[11] % (l, l))
                 hstr = []
                 wy = []
                 
-                print("Generating query URLs...")
+                print(lang[12])
                 rqs = []
                 if country == 'CZ':
                     jm = 37.0
@@ -118,18 +130,18 @@ if __name__ == '__main__':
 
                 # Elevation data downloading
                 if country == "CZ":
-                    print("Downloading data from 'ags.cuzk.cz/arcgis2/rest/services/dmr5g/ImageServer'...\nThis operation may take some time.")
-                    with Pool(64) as p:
+                    print(lang[14])
+                    with Pool(32) as p:
                         hstr = list(tqdm.tqdm(p.imap(getHeightCZ, rqs), total=len(rqs)))
                 elif country == "PL":
-                    print("Downloading data from 'services.gugik.gov.pl/nmt'...\nThis operation may take some time.")
-                    with Pool(64) as p:
+                    print(lang[14])
+                    with Pool(32) as p:
                         hstr = list(tqdm.tqdm(p.imap(openUrl, rqs), total=len(rqs))) # openUrl instead of getHeightPL
 
                 for j in range(len(hstr)):
                     h2str = hstr[j].split(',')
                     if len(h2str) < jm and j != len(hstr) - 1:
-                        print('Insufficient number of points – see query #%d' % (j + 1))
+                        print(lang[15] % (j + 1))
                     for k in range(len(h2str)):
                         if k < jm: # warunek
                             wy.append(h2str[k])
@@ -138,7 +150,7 @@ if __name__ == '__main__':
                     output.write(str(wy[j]) + "\n") # dane uporządkowane
                 output.close()
                 del we, wy, hstr
-                print("Elevation data downloaded and saved in 'h_%d.txt'." % part)
+                print(lang[16] % part)
     else:
-        print("This script has no support for Python %s.%s.%s. Run it in the Python 3.5 - 3.7 environment." % (ver[0], ver[1], ver[2]))
-    w = input("Press ENTER to close...")
+        print(lang[17] % (ver[0], ver[1], ver[2]))
+    w = input(lang[18])
