@@ -3,9 +3,14 @@
 
 from PIL import Image, ImageDraw
 from pathlib import Path
-import math
+import math, locale
 
-print("demGenerator - Module 3: DEM generation from downloaded elevation data")
+if locale.getdefaultlocale()[0] == 'pl_PL':
+    lang = ['demGenerator - skrypt 3/3: generowanie DEM z pobranych danych wysokościowych', 'Ilość części (kafelków): %d, wymiary DEM: (%d x %d) px\nGenerowanie DEM...', 'DEM zostało utworzone i zapisane', "Uwaga: nieprawidłowa ilość plików 'h_*.txt'! Jest: %d. Powinno być: %d.", 'Uwaga: nie znaleziono plików z danymi wysokościowymi', 'Wciśnij ENTER, aby zamknąć...']
+else:
+    lang = ['demGenerator - script 3/3: DEM generation from downloaded elevation data', 'Tiles count: %d, DEM size: (%d x %d) px\nDEM generation in progress...', 'DEM created and saved', "Warning: invalid 'h_*.txt' files count! Is: %d. Should be: %d.", 'Warning: files with elevation data not found', 'Press ENTER to close...']
+
+print(lang[0])
 
 # zbierz wszystkie dane wysokościowe ze wszystkich plików 'h_XX.txt'
 heights = []
@@ -45,11 +50,11 @@ if (i > 0):
             dh2 = (r - hmin - hmax) / 2
         else:
             dh2 = 0
-        print("H(min): %.2f m, H(max): %.2f m, dH: %.2f m, height scale: %d m" % (hmin, hmax, dh, r))
+        print('H(min): %.2f m, H(max): %.2f m, dH: %.2f m, Height Scale: %d m' % (hmin, hmax, dh, r))
     
         l = math.sqrt(len(heights[0])) # szerokość/wysokość jednego kafelka
         ltot = int((l - 1) * pc + 1)
-        print("Tiles count: %d, DEM size: (%d x %d) px\nDEM generation in progress..." % (len(heights), ltot, ltot))
+        print(lang[1] % (len(heights), ltot, ltot))
 
         dem = Image.new("I", (ltot, ltot))
         dem8 = Image.new("RGB", (ltot, ltot))
@@ -68,15 +73,15 @@ if (i > 0):
                             demR += 1
                             demG -= 255
                         d8.point((j * (l - 1) + (k % l), ltot - (i * (l - 1) + int(k / l)) - 1), (demR, demG, 0))
-        dem.save("demGen_data/map_dem.png", "PNG")
-        dem8.save("demGen_data/map_dem_8.png", "PNG")
+        dem.save("demGen_data/map_dem_16bit.png", "PNG")
+        dem8.save("demGen_data/map_dem_8bit.png", "PNG")
         dem.close()
         dem8.close()
-        print("DEM generated and saved")
+        print(lang[2])
     else:
-        print("Invalid 'h_*.txt' files count! Is: %d. Should be: %d." % (len(heights), math.pow(2, math.floor(math.log2(len(heights))))))
+        print(lang[3] % (len(heights), math.pow(2, math.floor(math.log2(len(heights))))))
         del heights, hmaxs, hmins
 else:
-    print("Files with elevation data not found")
+    print(lang[4])
 
-w = input("Press ENTER to close...")
+w = input(lang[5])
