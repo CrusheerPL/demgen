@@ -1,15 +1,13 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import numbers
-import math
-import os
+import numbers, math, os, locale
 
 """
 Original JS code from: https://www.pecina.cz/krovak.html
 Author: Tomáš Pecina
 E-mail: tomas@pecina.cz
-To Python3 translated by: RusheerPL – 2019-11-14
+To Python3 translated by crpl – 2019-11-14
 """
 def wgs84_to_sjtsk(B, L, H):
     d2r = math.pi / 180
@@ -114,7 +112,7 @@ Original C++ code from:  :
            Uriasz, J., “Wybrane odwzorowania kartograficzne”, Akademia Morska w Szczecinie,
            http://uriasz.am.szczecin.pl/naw_bezp/odwzorowania.html
            
-To Python3 translated by: RusheerPL – 2019-10-27
+To Python3 translated by crpl – 2019-10-27
 """
 def wgs84_do_puwg92(B_stopnie, L_stopnie):
     # konwersja współrzednych z układu WGS 84 do układu PUWG 1992
@@ -170,14 +168,20 @@ def wgs84_do_puwg92(B_stopnie, L_stopnie):
 
 
 if __name__ == '__main__':
-    print("demGenerator - Module 1: determining the points' coordinates")
+    if locale.getdefaultlocale()[0] == 'pl_PL':
+        lang = ['demGenerator - skrypt 1/3: wyliczanie współrzędnych punktów', 'Nie można wczytać pliku konfiguracyjnego - wprowadź dane ręcznie.', 'Wczytywanie pliku konfiguracyjnego...', 'Kraj (PL/CZ/SK): ', 'Współrzędne granic mapy [w stopniach dziesiętnych]:\n- Północ: ', '- Południe: ', '- Zachód: ', '- Wschód:', 'Wymiary mapy [m]: ', 'Rozdzielczość terenu [m/px]: ',
+                'Ilość części: ', 'Kraj: %s, B(min): %s, B(max): %s, L(min): %s, L(max): %s\nWymiary mapy: %s x %s, rozdzielczość terenu: %s m/px, %s część(ci)', 'Przetwarzanie w toku...', 'Uwaga: współrzędne poza zakresem', 'Uwaga: nieprawidłowe dane wejściowe (wymiary mapy lub rozdzielczość terenu)', 'Wciśnij ENTER, aby zamknąć...']
+    else:
+        lang = ["demGenerator - script 1/3: points' coordinates calculation", "Can't load the config file - you must enter your data manually.", 'Config file is loading...', 'Country (PL/CZ/SK): ', "Map bounds' coordinates [decimal degrees]:\n- North: ", '- South: ', '- West: ', '- East: ', 'Map dimensions [meters]: ', 'Terrain resolution [meters per pixel]: ',
+                'Tiles count: ', 'Country: %s, B(min): %s, B(max): %s, L(min): %s, L(max): %s\nMap dimensions: %s x %s, terrain resolution: %s m/px, %s tile(s)', 'Processing in progress...', 'Warning: coordinates out of range', 'Warning: Incorrect input data (map dimensions or terrain resolution)', 'Press ENTER to close...']
+    print(lang[0])
     use_stdin = True
     try:
         config = open("demGenerator_config.txt", "r")
     except:
-        print("Can't load the config file - you must enter your data manually.")
+        print(lang[1])
     else:
-        print("Config file is loading...")
+        print(lang[2])
         string = config.read()
         string = string.split()
         country = string[0]
@@ -191,30 +195,30 @@ if __name__ == '__main__':
         use_stdin = False
     
     if (use_stdin):
-        country = input("Country code (PL/CZ/SK): ")
-        n = float(input("Map bounds' coordinates [decimal degrees]:\n- North: "))
-        s = float(input("- South: "))
-        w = float(input("- West: "))
-        e = float(input("- East: "))
-        l = int(input("Map edge length [meters]: "))
-        d = int(input("Resolution [meters per pixel]: "))
-        div = int(input("Tiles count (2^n): "))
+        country = input(lang[3])
+        n = float(input(lang[4]))
+        s = float(input(lang[5]))
+        w = float(input(lang[6]))
+        e = float(input(lang[7]))
+        l = int(input(lang[8]))
+        d = int(input(lang[9]))
+        div = int(input(lang[10]))
 
     if s > n:
         n, s = s, n
     if w > e:
         w, e = e, w
 
-    print("Country: %s, B(min): %s, B(max): %s, L(min): %s, L(max): %s\nMap's dimensions: %s x %s, resolution: %s m/px, %s tile(s)" % (country, s, n, w, e, l, l, d, div))
+    print(lang[11] % (country, s, n, w, e, l, l, d, div))
 
     while (country != "CZ" and country != "PL" and country != "SK"):
-        country = input("Re-enter the country code (PL/CZ/SK): ")
+        country = input(lang[3])
 
     while (math.sqrt(div) != int(math.sqrt(div))):
-        div = input("Re-enter the tiles count (must be equal to 2^n): ")
+        div = input(lang[10])
     div = int(math.sqrt(div))
 
-    print("Data processing in progress...")
+    print(lang[12])
     
     if (l % (d * div) == 0):
         if (not os.path.exists(os.getcwd() + "\\demGen_data")):
@@ -237,7 +241,7 @@ if __name__ == '__main__':
                                 data.write(str(x_sjtsk) + " " + str(y_sjtsk) + "\n")
                         data.close()
             else:
-                print("Coordinates out of range")
+                print(lang[13])
         elif (country == "PL"):
             if (n >= 48 and n <= 56 and s >= 48 and s <= 56 and w >= 13 and w <= 25 and e >= 13 and e <= 25):
                 for x_iter in range(div):
@@ -251,7 +255,7 @@ if __name__ == '__main__':
                                 data.write(str(x_puwg) + " " + str(y_puwg) + "\n")
                         data.close()
             else:
-                print("Coordinates out of range")
+                print(lang[13])
     else:
-        print("Incorrect input data (map edge length or resolution)")
-    w = input("Press ENTER to close...")
+        print(lang[14])
+    w = input(lang[15])
