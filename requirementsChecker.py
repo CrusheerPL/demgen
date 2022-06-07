@@ -8,7 +8,7 @@ import os
 if locale.getdefaultlocale()[0] == 'pl_PL':
     lang = ('Program sprawdzający wymagania demGeneratora\n\nSprawdzanie wersji środowiska Pythona...', 'Wersja: %s.%s.%s - poprawna', '\nPróba zaimportowania modułu "%s"...', 'Nie znaleziono tego modułu - teraz nastąpi jego instalacja.\n--------------------', 'Moduł pomyślnie zaimportowano', 'demGen nie wspiera Pythona w wersji %s.%s.%s. Uruchom go w 3.5 - 3.7.', '\nWciśnij ENTER, aby zamknąć...')
 else:
-    lang = ('demGen requirements verifier\n\nPython version checking...', 'Version: %s.%s.%s - correct', '\nTrying to import the "%s" module...', 'Module not found - it will be installed now.\n--------------------', 'Module imported successfully', 'demGen has no support for Python %s.%s.%s. Run it in the Python 3.5 - 3.7 environment.', '\nPress ENTER to close...')
+    lang = ('demGen requirements checker\n\nPython version checking...', 'Version: %s.%s.%s - correct', '\nTrying to import the "%s" module...', 'Module not found - it will be installed now.\n--------------------', 'Module imported successfully', 'demGen has no support for Python %s.%s.%s. Run it in the Python 3.5 - 3.7 environment.', '\nPress ENTER to close...')
 
 print(lang[0])
 ver = platform.python_version_tuple()
