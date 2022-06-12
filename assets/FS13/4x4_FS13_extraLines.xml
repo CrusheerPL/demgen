@@ -1,0 +1,69 @@
+FS 2013
+EN: Extra lines which you have to paste to the map.i3d in the text editor:
+PL: Dodatkowe linijki do wklejenia do i3d mapy w edytorze tekstu:
+
+  <Files>
+    ...
+    <File fileId="100001" filename="textures/terrain/ortho01_diffuse.png" relativePath="true"/>
+    <File fileId="100003" filename="textures/terrain/ortho02_diffuse.png" relativePath="true"/>
+    <File fileId="100005" filename="textures/terrain/ortho03_diffuse.png" relativePath="true"/>
+    <File fileId="100007" filename="textures/terrain/ortho04_diffuse.png" relativePath="true"/>
+    <File fileId="100009" filename="textures/terrain/ortho05_diffuse.png" relativePath="true"/>
+    <File fileId="100011" filename="textures/terrain/ortho06_diffuse.png" relativePath="true"/>
+    <File fileId="100013" filename="textures/terrain/ortho07_diffuse.png" relativePath="true"/>
+    <File fileId="100015" filename="textures/terrain/ortho08_diffuse.png" relativePath="true"/>
+    <File fileId="100017" filename="textures/terrain/ortho09_diffuse.png" relativePath="true"/>
+    <File fileId="100019" filename="textures/terrain/ortho10_diffuse.png" relativePath="true"/>
+    <File fileId="100021" filename="textures/terrain/ortho11_diffuse.png" relativePath="true"/>
+    <File fileId="100023" filename="textures/terrain/ortho12_diffuse.png" relativePath="true"/>
+    <File fileId="100025" filename="textures/terrain/ortho13_diffuse.png" relativePath="true"/>
+    <File fileId="100027" filename="textures/terrain/ortho14_diffuse.png" relativePath="true"/>
+    <File fileId="100029" filename="textures/terrain/ortho15_diffuse.png" relativePath="true"/>
+    <File fileId="100031" filename="textures/terrain/ortho16_diffuse.png" relativePath="true"/>
+    <File fileId="100002" filename="map01/ortho01_weight.png" relativePath="true"/>
+    <File fileId="100004" filename="map01/ortho02_weight.png" relativePath="true"/>
+    <File fileId="100006" filename="map01/ortho03_weight.png" relativePath="true"/>
+    <File fileId="100008" filename="map01/ortho04_weight.png" relativePath="true"/>
+    <File fileId="100010" filename="map01/ortho05_weight.png" relativePath="true"/>
+    <File fileId="100012" filename="map01/ortho06_weight.png" relativePath="true"/>
+    <File fileId="100014" filename="map01/ortho07_weight.png" relativePath="true"/>
+    <File fileId="100016" filename="map01/ortho08_weight.png" relativePath="true"/>
+    <File fileId="100018" filename="map01/ortho09_weight.png" relativePath="true"/>
+    <File fileId="100020" filename="map01/ortho10_weight.png" relativePath="true"/>
+    <File fileId="100022" filename="map01/ortho11_weight.png" relativePath="true"/>
+    <File fileId="100024" filename="map01/ortho12_weight.png" relativePath="true"/>
+    <File fileId="100026" filename="map01/ortho13_weight.png" relativePath="true"/>
+    <File fileId="100028" filename="map01/ortho14_weight.png" relativePath="true"/>
+    <File fileId="100030" filename="map01/ortho15_weight.png" relativePath="true"/>
+    <File fileId="100032" filename="map01/ortho16_weight.png" relativePath="true"/>
+    ...
+  </Files>
+
+  <Scene>
+    ...
+    <TerrainTransformGroup>
+      <Layers>
+        ...
+        <Layer name="ortho01" detailMapId="100001" unitSize="1024" weightMapId="100002" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho02" detailMapId="100003" unitSize="1024" weightMapId="100004" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho03" detailMapId="100005" unitSize="1024" weightMapId="100006" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho04" detailMapId="100007" unitSize="1024" weightMapId="100008" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho05" detailMapId="100009" unitSize="1024" weightMapId="100010" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho06" detailMapId="100011" unitSize="1024" weightMapId="100012" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho07" detailMapId="100013" unitSize="1024" weightMapId="100014" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho08" detailMapId="100015" unitSize="1024" weightMapId="100016" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho09" detailMapId="100017" unitSize="1024" weightMapId="100018" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho10" detailMapId="100019" unitSize="1024" weightMapId="100020" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho11" detailMapId="100021" unitSize="1024" weightMapId="100022" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho12" detailMapId="100023" unitSize="1024" weightMapId="100024" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho13" detailMapId="100025" unitSize="1024" weightMapId="100026" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho14" detailMapId="100027" unitSize="1024" weightMapId="100028" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho15" detailMapId="100029" unitSize="1024" weightMapId="100030" distanceMapId="YY" distanceMapUnitSize="128"/>
+        <Layer name="ortho16" detailMapId="100031" unitSize="1024" weightMapId="100032" distanceMapId="YY" distanceMapUnitSize="128"/>
+        ...
+      </Layers>
+    </TerrainTransformGroup>
+    ...
+  </Scene>
+
+"YY" = grass' distanceMapId / w tym miejscu wpisz wartość parametru distanceMapId warstwy (layer) "grass"

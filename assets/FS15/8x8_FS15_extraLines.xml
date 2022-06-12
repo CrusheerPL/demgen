@@ -1,0 +1,214 @@
+FS 15
+EN: Extra lines which you have to paste to the map.i3d in the text editor:
+PL: Dodatkowe linijki do wklejenia do i3d mapy w edytorze tekstu:
+
+  <Files>
+    ...
+    <File fileId="100000" filename="textures/terrain/ortho_normal.png"/>
+    <File fileId="100001" filename="textures/terrain/ortho01_diffuse.png" relativePath="true"/>
+    <File fileId="100003" filename="textures/terrain/ortho02_diffuse.png" relativePath="true"/>
+    <File fileId="100005" filename="textures/terrain/ortho03_diffuse.png" relativePath="true"/>
+    <File fileId="100007" filename="textures/terrain/ortho04_diffuse.png" relativePath="true"/>
+    <File fileId="100009" filename="textures/terrain/ortho05_diffuse.png" relativePath="true"/>
+    <File fileId="100011" filename="textures/terrain/ortho06_diffuse.png" relativePath="true"/>
+    <File fileId="100013" filename="textures/terrain/ortho07_diffuse.png" relativePath="true"/>
+    <File fileId="100015" filename="textures/terrain/ortho08_diffuse.png" relativePath="true"/>
+    <File fileId="100017" filename="textures/terrain/ortho09_diffuse.png" relativePath="true"/>
+    <File fileId="100019" filename="textures/terrain/ortho10_diffuse.png" relativePath="true"/>
+    <File fileId="100021" filename="textures/terrain/ortho11_diffuse.png" relativePath="true"/>
+    <File fileId="100023" filename="textures/terrain/ortho12_diffuse.png" relativePath="true"/>
+    <File fileId="100025" filename="textures/terrain/ortho13_diffuse.png" relativePath="true"/>
+    <File fileId="100027" filename="textures/terrain/ortho14_diffuse.png" relativePath="true"/>
+    <File fileId="100029" filename="textures/terrain/ortho15_diffuse.png" relativePath="true"/>
+    <File fileId="100031" filename="textures/terrain/ortho16_diffuse.png" relativePath="true"/>
+    <File fileId="100033" filename="textures/terrain/ortho17_diffuse.png" relativePath="true"/>
+    <File fileId="100035" filename="textures/terrain/ortho18_diffuse.png" relativePath="true"/>
+    <File fileId="100037" filename="textures/terrain/ortho19_diffuse.png" relativePath="true"/>
+    <File fileId="100039" filename="textures/terrain/ortho20_diffuse.png" relativePath="true"/>
+    <File fileId="100041" filename="textures/terrain/ortho21_diffuse.png" relativePath="true"/>
+    <File fileId="100043" filename="textures/terrain/ortho22_diffuse.png" relativePath="true"/>
+    <File fileId="100045" filename="textures/terrain/ortho23_diffuse.png" relativePath="true"/>
+    <File fileId="100047" filename="textures/terrain/ortho24_diffuse.png" relativePath="true"/>
+    <File fileId="100049" filename="textures/terrain/ortho25_diffuse.png" relativePath="true"/>
+    <File fileId="100051" filename="textures/terrain/ortho26_diffuse.png" relativePath="true"/>
+    <File fileId="100053" filename="textures/terrain/ortho27_diffuse.png" relativePath="true"/>
+    <File fileId="100055" filename="textures/terrain/ortho28_diffuse.png" relativePath="true"/>
+    <File fileId="100057" filename="textures/terrain/ortho29_diffuse.png" relativePath="true"/>
+    <File fileId="100059" filename="textures/terrain/ortho30_diffuse.png" relativePath="true"/>
+    <File fileId="100061" filename="textures/terrain/ortho31_diffuse.png" relativePath="true"/>
+    <File fileId="100063" filename="textures/terrain/ortho32_diffuse.png" relativePath="true"/>
+    <File fileId="100065" filename="textures/terrain/ortho33_diffuse.png" relativePath="true"/>
+    <File fileId="100067" filename="textures/terrain/ortho34_diffuse.png" relativePath="true"/>
+    <File fileId="100069" filename="textures/terrain/ortho35_diffuse.png" relativePath="true"/>
+    <File fileId="100071" filename="textures/terrain/ortho36_diffuse.png" relativePath="true"/>
+    <File fileId="100073" filename="textures/terrain/ortho37_diffuse.png" relativePath="true"/>
+    <File fileId="100075" filename="textures/terrain/ortho38_diffuse.png" relativePath="true"/>
+    <File fileId="100077" filename="textures/terrain/ortho39_diffuse.png" relativePath="true"/>
+    <File fileId="100079" filename="textures/terrain/ortho40_diffuse.png" relativePath="true"/>
+    <File fileId="100081" filename="textures/terrain/ortho41_diffuse.png" relativePath="true"/>
+    <File fileId="100083" filename="textures/terrain/ortho42_diffuse.png" relativePath="true"/>
+    <File fileId="100085" filename="textures/terrain/ortho43_diffuse.png" relativePath="true"/>
+    <File fileId="100087" filename="textures/terrain/ortho44_diffuse.png" relativePath="true"/>
+    <File fileId="100089" filename="textures/terrain/ortho45_diffuse.png" relativePath="true"/>
+    <File fileId="100091" filename="textures/terrain/ortho46_diffuse.png" relativePath="true"/>
+    <File fileId="100093" filename="textures/terrain/ortho47_diffuse.png" relativePath="true"/>
+    <File fileId="100095" filename="textures/terrain/ortho48_diffuse.png" relativePath="true"/>
+    <File fileId="100097" filename="textures/terrain/ortho49_diffuse.png" relativePath="true"/>
+    <File fileId="100099" filename="textures/terrain/ortho50_diffuse.png" relativePath="true"/>
+    <File fileId="100101" filename="textures/terrain/ortho51_diffuse.png" relativePath="true"/>
+    <File fileId="100103" filename="textures/terrain/ortho52_diffuse.png" relativePath="true"/>
+    <File fileId="100105" filename="textures/terrain/ortho53_diffuse.png" relativePath="true"/>
+    <File fileId="100107" filename="textures/terrain/ortho54_diffuse.png" relativePath="true"/>
+    <File fileId="100109" filename="textures/terrain/ortho55_diffuse.png" relativePath="true"/>
+    <File fileId="100111" filename="textures/terrain/ortho56_diffuse.png" relativePath="true"/>
+    <File fileId="100113" filename="textures/terrain/ortho57_diffuse.png" relativePath="true"/>
+    <File fileId="100115" filename="textures/terrain/ortho58_diffuse.png" relativePath="true"/>
+    <File fileId="100117" filename="textures/terrain/ortho59_diffuse.png" relativePath="true"/>
+    <File fileId="100119" filename="textures/terrain/ortho60_diffuse.png" relativePath="true"/>
+    <File fileId="100121" filename="textures/terrain/ortho61_diffuse.png" relativePath="true"/>
+    <File fileId="100123" filename="textures/terrain/ortho62_diffuse.png" relativePath="true"/>
+    <File fileId="100125" filename="textures/terrain/ortho63_diffuse.png" relativePath="true"/>
+    <File fileId="100127" filename="textures/terrain/ortho64_diffuse.png" relativePath="true"/>
+    <File fileId="100002" filename="map01/ortho01_weight.png" relativePath="true"/>
+    <File fileId="100004" filename="map01/ortho02_weight.png" relativePath="true"/>
+    <File fileId="100006" filename="map01/ortho03_weight.png" relativePath="true"/>
+    <File fileId="100008" filename="map01/ortho04_weight.png" relativePath="true"/>
+    <File fileId="100010" filename="map01/ortho05_weight.png" relativePath="true"/>
+    <File fileId="100012" filename="map01/ortho06_weight.png" relativePath="true"/>
+    <File fileId="100014" filename="map01/ortho07_weight.png" relativePath="true"/>
+    <File fileId="100016" filename="map01/ortho08_weight.png" relativePath="true"/>
+    <File fileId="100018" filename="map01/ortho09_weight.png" relativePath="true"/>
+    <File fileId="100020" filename="map01/ortho10_weight.png" relativePath="true"/>
+    <File fileId="100022" filename="map01/ortho11_weight.png" relativePath="true"/>
+    <File fileId="100024" filename="map01/ortho12_weight.png" relativePath="true"/>
+    <File fileId="100026" filename="map01/ortho13_weight.png" relativePath="true"/>
+    <File fileId="100028" filename="map01/ortho14_weight.png" relativePath="true"/>
+    <File fileId="100030" filename="map01/ortho15_weight.png" relativePath="true"/>
+    <File fileId="100032" filename="map01/ortho16_weight.png" relativePath="true"/>
+    <File fileId="100034" filename="map01/ortho17_weight.png" relativePath="true"/>
+    <File fileId="100036" filename="map01/ortho18_weight.png" relativePath="true"/>
+    <File fileId="100038" filename="map01/ortho19_weight.png" relativePath="true"/>
+    <File fileId="100040" filename="map01/ortho20_weight.png" relativePath="true"/>
+    <File fileId="100042" filename="map01/ortho21_weight.png" relativePath="true"/>
+    <File fileId="100044" filename="map01/ortho22_weight.png" relativePath="true"/>
+    <File fileId="100046" filename="map01/ortho23_weight.png" relativePath="true"/>
+    <File fileId="100048" filename="map01/ortho24_weight.png" relativePath="true"/>
+    <File fileId="100050" filename="map01/ortho25_weight.png" relativePath="true"/>
+    <File fileId="100052" filename="map01/ortho26_weight.png" relativePath="true"/>
+    <File fileId="100054" filename="map01/ortho27_weight.png" relativePath="true"/>
+    <File fileId="100056" filename="map01/ortho28_weight.png" relativePath="true"/>
+    <File fileId="100058" filename="map01/ortho29_weight.png" relativePath="true"/>
+    <File fileId="100060" filename="map01/ortho30_weight.png" relativePath="true"/>
+    <File fileId="100062" filename="map01/ortho31_weight.png" relativePath="true"/>
+    <File fileId="100064" filename="map01/ortho32_weight.png" relativePath="true"/>
+    <File fileId="100066" filename="map01/ortho33_weight.png" relativePath="true"/>
+    <File fileId="100068" filename="map01/ortho34_weight.png" relativePath="true"/>
+    <File fileId="100070" filename="map01/ortho35_weight.png" relativePath="true"/>
+    <File fileId="100072" filename="map01/ortho36_weight.png" relativePath="true"/>
+    <File fileId="100074" filename="map01/ortho37_weight.png" relativePath="true"/>
+    <File fileId="100076" filename="map01/ortho38_weight.png" relativePath="true"/>
+    <File fileId="100078" filename="map01/ortho39_weight.png" relativePath="true"/>
+    <File fileId="100080" filename="map01/ortho40_weight.png" relativePath="true"/>
+    <File fileId="100082" filename="map01/ortho41_weight.png" relativePath="true"/>
+    <File fileId="100084" filename="map01/ortho42_weight.png" relativePath="true"/>
+    <File fileId="100086" filename="map01/ortho43_weight.png" relativePath="true"/>
+    <File fileId="100088" filename="map01/ortho44_weight.png" relativePath="true"/>
+    <File fileId="100090" filename="map01/ortho45_weight.png" relativePath="true"/>
+    <File fileId="100092" filename="map01/ortho46_weight.png" relativePath="true"/>
+    <File fileId="100094" filename="map01/ortho47_weight.png" relativePath="true"/>
+    <File fileId="100096" filename="map01/ortho48_weight.png" relativePath="true"/>
+    <File fileId="100098" filename="map01/ortho49_weight.png" relativePath="true"/>
+    <File fileId="100100" filename="map01/ortho50_weight.png" relativePath="true"/>
+    <File fileId="100102" filename="map01/ortho51_weight.png" relativePath="true"/>
+    <File fileId="100104" filename="map01/ortho52_weight.png" relativePath="true"/>
+    <File fileId="100106" filename="map01/ortho53_weight.png" relativePath="true"/>
+    <File fileId="100108" filename="map01/ortho54_weight.png" relativePath="true"/>
+    <File fileId="100110" filename="map01/ortho55_weight.png" relativePath="true"/>
+    <File fileId="100112" filename="map01/ortho56_weight.png" relativePath="true"/>
+    <File fileId="100114" filename="map01/ortho57_weight.png" relativePath="true"/>
+    <File fileId="100116" filename="map01/ortho58_weight.png" relativePath="true"/>
+    <File fileId="100118" filename="map01/ortho59_weight.png" relativePath="true"/>
+    <File fileId="100120" filename="map01/ortho60_weight.png" relativePath="true"/>
+    <File fileId="100122" filename="map01/ortho61_weight.png" relativePath="true"/>
+    <File fileId="100124" filename="map01/ortho62_weight.png" relativePath="true"/>
+    <File fileId="100126" filename="map01/ortho63_weight.png" relativePath="true"/>
+    <File fileId="100128" filename="map01/ortho64_weight.png" relativePath="true"/>
+    ...
+  </Files>
+
+  <Scene>
+    ...
+    <TerrainTransformGroup>
+      <Layers>
+        ...
+        <Layer name="ortho01" detailMapId="100001" unitSize="1024" weightMapId="100002" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho02" detailMapId="100003" unitSize="1024" weightMapId="100004" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho03" detailMapId="100005" unitSize="1024" weightMapId="100006" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho04" detailMapId="100007" unitSize="1024" weightMapId="100008" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho05" detailMapId="100009" unitSize="1024" weightMapId="100010" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho06" detailMapId="100011" unitSize="1024" weightMapId="100012" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho07" detailMapId="100013" unitSize="1024" weightMapId="100014" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho08" detailMapId="100015" unitSize="1024" weightMapId="100016" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho09" detailMapId="100017" unitSize="1024" weightMapId="100018" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho10" detailMapId="100019" unitSize="1024" weightMapId="100020" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho11" detailMapId="100021" unitSize="1024" weightMapId="100022" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho12" detailMapId="100023" unitSize="1024" weightMapId="100024" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho13" detailMapId="100025" unitSize="1024" weightMapId="100026" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho14" detailMapId="100027" unitSize="1024" weightMapId="100028" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho15" detailMapId="100029" unitSize="1024" weightMapId="100030" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho16" detailMapId="100031" unitSize="1024" weightMapId="100032" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho17" detailMapId="100033" unitSize="1024" weightMapId="100034" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho18" detailMapId="100035" unitSize="1024" weightMapId="100036" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho19" detailMapId="100037" unitSize="1024" weightMapId="100038" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho20" detailMapId="100039" unitSize="1024" weightMapId="100040" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho21" detailMapId="100041" unitSize="1024" weightMapId="100042" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho22" detailMapId="100043" unitSize="1024" weightMapId="100044" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho23" detailMapId="100045" unitSize="1024" weightMapId="100046" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho24" detailMapId="100047" unitSize="1024" weightMapId="100048" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho25" detailMapId="100049" unitSize="1024" weightMapId="100050" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho26" detailMapId="100051" unitSize="1024" weightMapId="100052" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho27" detailMapId="100053" unitSize="1024" weightMapId="100054" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho28" detailMapId="100055" unitSize="1024" weightMapId="100056" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho29" detailMapId="100057" unitSize="1024" weightMapId="100058" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho30" detailMapId="100059" unitSize="1024" weightMapId="100060" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho31" detailMapId="100061" unitSize="1024" weightMapId="100062" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho32" detailMapId="100063" unitSize="1024" weightMapId="100064" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho33" detailMapId="100065" unitSize="1024" weightMapId="100066" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho34" detailMapId="100067" unitSize="1024" weightMapId="100068" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho35" detailMapId="100069" unitSize="1024" weightMapId="100070" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho36" detailMapId="100071" unitSize="1024" weightMapId="100072" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho37" detailMapId="100073" unitSize="1024" weightMapId="100074" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho38" detailMapId="100075" unitSize="1024" weightMapId="100076" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho39" detailMapId="100077" unitSize="1024" weightMapId="100078" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho40" detailMapId="100079" unitSize="1024" weightMapId="100080" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho41" detailMapId="100081" unitSize="1024" weightMapId="100082" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho42" detailMapId="100083" unitSize="1024" weightMapId="100084" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho43" detailMapId="100085" unitSize="1024" weightMapId="100086" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho44" detailMapId="100087" unitSize="1024" weightMapId="100088" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho45" detailMapId="100089" unitSize="1024" weightMapId="100090" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho46" detailMapId="100091" unitSize="1024" weightMapId="100092" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho47" detailMapId="100093" unitSize="1024" weightMapId="100094" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho48" detailMapId="100095" unitSize="1024" weightMapId="100096" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho49" detailMapId="100097" unitSize="1024" weightMapId="100098" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho50" detailMapId="100099" unitSize="1024" weightMapId="100100" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho51" detailMapId="100101" unitSize="1024" weightMapId="100102" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho52" detailMapId="100103" unitSize="1024" weightMapId="100104" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho53" detailMapId="100105" unitSize="1024" weightMapId="100106" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho54" detailMapId="100107" unitSize="1024" weightMapId="100108" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho55" detailMapId="100109" unitSize="1024" weightMapId="100110" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho56" detailMapId="100111" unitSize="1024" weightMapId="100112" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho57" detailMapId="100113" unitSize="1024" weightMapId="100114" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho58" detailMapId="100115" unitSize="1024" weightMapId="100116" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho59" detailMapId="100117" unitSize="1024" weightMapId="100118" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho60" detailMapId="100119" unitSize="1024" weightMapId="100120" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho61" detailMapId="100121" unitSize="1024" weightMapId="100122" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho62" detailMapId="100123" unitSize="1024" weightMapId="100124" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho63" detailMapId="100125" unitSize="1024" weightMapId="100126" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        <Layer name="ortho64" detailMapId="100127" unitSize="1024" weightMapId="100128" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        ...
+      </Layers>
+    </TerrainTransformGroup>
+    ...
+  </Scene>
+
+"YY" = grass' distanceMapId / w tym miejscu wpisz wartość parametru distanceMapId warstwy (layer) "grass"

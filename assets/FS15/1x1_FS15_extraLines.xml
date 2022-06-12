@@ -1,0 +1,25 @@
+FS 15
+EN: Extra lines which you have to paste to the map.i3d in the text editor:
+PL: Dodatkowe linijki do wklejenia do i3d mapy w edytorze tekstu:
+
+  <Files>
+    ...
+    <File fileId="100000" filename="textures/terrain/ortho_normal.png"/>
+    <File fileId="100001" filename="textures/terrain/ortho01_diffuse.png" relativePath="true"/>
+    <File fileId="100002" filename="map01/ortho01_weight.png" relativePath="true"/>
+    ...
+  </Files>
+
+  <Scene>
+    ...
+    <TerrainTransformGroup>
+      <Layers>
+        ...
+        <Layer name="ortho01" detailMapId="100001" unitSize="1024" weightMapId="100002" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1" distanceMapUnitSize="128"/>
+        ...
+      </Layers>
+    </TerrainTransformGroup>
+    ...
+  </Scene>
+
+"YY" = grass' distanceMapId / w tym miejscu wpisz wartość parametru distanceMapId warstwy (layer) "grass"

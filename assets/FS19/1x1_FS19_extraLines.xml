@@ -1,0 +1,24 @@
+FS 19
+EN: Extra lines which you have to paste to the map.i3d in the text editor:
+PL: Dodatkowe linijki do wklejenia do i3d mapy w edytorze tekstu:
+
+  <Files>
+    ...
+    <File fileId="100000" filename="textures/terrain/ortho_normal.png"/>
+    <File fileId="100001" filename="textures/terrain/ortho01_diffuse.png"/>
+    <File fileId="100002" filename="mapDE/ortho01_weight.png"/>
+    ...
+  </Files>
+
+  <Scene>
+    ...
+    <TerrainTransformGroup>
+      <Layers>
+        ...
+        <Layer name="ortho01" detailMapId="100001" unitSize="1024" weightMapId="100002" distanceMapId="4" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1 2" blendContrast="0.2"/>
+        ...
+      </Layers>
+    </TerrainTransformGroup>
+    ...
+  </Scene>
+

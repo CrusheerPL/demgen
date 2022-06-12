@@ -1,0 +1,68 @@
+FS 22
+EN: Extra lines which you have to paste to the map.i3d in the text editor:
+PL: Dodatkowe linijki do wklejenia do i3d mapy w edytorze tekstu:
+
+  <Files>
+    ...
+    <File fileId="100000" filename="textures/terrain/ortho_normal.png"/>
+    <File fileId="100001" filename="textures/terrain/ortho01_diffuse.png"/>
+    <File fileId="100003" filename="textures/terrain/ortho02_diffuse.png"/>
+    <File fileId="100005" filename="textures/terrain/ortho03_diffuse.png"/>
+    <File fileId="100007" filename="textures/terrain/ortho04_diffuse.png"/>
+    <File fileId="100009" filename="textures/terrain/ortho05_diffuse.png"/>
+    <File fileId="100011" filename="textures/terrain/ortho06_diffuse.png"/>
+    <File fileId="100013" filename="textures/terrain/ortho07_diffuse.png"/>
+    <File fileId="100015" filename="textures/terrain/ortho08_diffuse.png"/>
+    <File fileId="100017" filename="textures/terrain/ortho09_diffuse.png"/>
+    <File fileId="100019" filename="textures/terrain/ortho10_diffuse.png"/>
+    <File fileId="100021" filename="textures/terrain/ortho11_diffuse.png"/>
+    <File fileId="100023" filename="textures/terrain/ortho12_diffuse.png"/>
+    <File fileId="100025" filename="textures/terrain/ortho13_diffuse.png"/>
+    <File fileId="100027" filename="textures/terrain/ortho14_diffuse.png"/>
+    <File fileId="100029" filename="textures/terrain/ortho15_diffuse.png"/>
+    <File fileId="100031" filename="textures/terrain/ortho16_diffuse.png"/>
+    <File fileId="100002" filename="data/ortho01_weight.png"/>
+    <File fileId="100004" filename="data/ortho02_weight.png"/>
+    <File fileId="100006" filename="data/ortho03_weight.png"/>
+    <File fileId="100008" filename="data/ortho04_weight.png"/>
+    <File fileId="100010" filename="data/ortho05_weight.png"/>
+    <File fileId="100012" filename="data/ortho06_weight.png"/>
+    <File fileId="100014" filename="data/ortho07_weight.png"/>
+    <File fileId="100016" filename="data/ortho08_weight.png"/>
+    <File fileId="100018" filename="data/ortho09_weight.png"/>
+    <File fileId="100020" filename="data/ortho10_weight.png"/>
+    <File fileId="100022" filename="data/ortho11_weight.png"/>
+    <File fileId="100024" filename="data/ortho12_weight.png"/>
+    <File fileId="100026" filename="data/ortho13_weight.png"/>
+    <File fileId="100028" filename="data/ortho14_weight.png"/>
+    <File fileId="100030" filename="data/ortho15_weight.png"/>
+    <File fileId="100032" filename="data/ortho16_weight.png"/>
+    ...
+  </Files>
+
+  <Scene>
+      ...
+      <TerrainTransformGroup>
+        <Layers>
+          ...
+          <Layer name="ortho01" detailMapId="100001" unitSize="1024" weightMapId="100002" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho02" detailMapId="100003" unitSize="1024" weightMapId="100004" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho03" detailMapId="100005" unitSize="1024" weightMapId="100006" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho04" detailMapId="100007" unitSize="1024" weightMapId="100008" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho05" detailMapId="100009" unitSize="1024" weightMapId="100010" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho06" detailMapId="100011" unitSize="1024" weightMapId="100012" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho07" detailMapId="100013" unitSize="1024" weightMapId="100014" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho08" detailMapId="100015" unitSize="1024" weightMapId="100016" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho09" detailMapId="100017" unitSize="1024" weightMapId="100018" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho10" detailMapId="100019" unitSize="1024" weightMapId="100020" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho11" detailMapId="100021" unitSize="1024" weightMapId="100022" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho12" detailMapId="100023" unitSize="1024" weightMapId="100024" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho13" detailMapId="100025" unitSize="1024" weightMapId="100026" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho14" detailMapId="100027" unitSize="1024" weightMapId="100028" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho15" detailMapId="100029" unitSize="1024" weightMapId="100030" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho16" detailMapId="100031" unitSize="1024" weightMapId="100032" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          ...
+        </Layers>
+      </TerrainTransformGroup>
+      ...
+  </Scene>

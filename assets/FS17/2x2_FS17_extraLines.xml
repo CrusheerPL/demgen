@@ -1,0 +1,34 @@
+FS 17
+EN: Extra lines which you have to paste to the map.i3d in the text editor:
+PL: Dodatkowe linijki do wklejenia do i3d mapy w edytorze tekstu:
+
+  <Files>
+    ...
+    <File fileId="100000" filename="textures/terrain/ortho_normal.png"/>
+    <File fileId="100001" filename="textures/terrain/ortho01_diffuse.png" relativePath="true"/>
+    <File fileId="100003" filename="textures/terrain/ortho02_diffuse.png" relativePath="true"/>
+    <File fileId="100005" filename="textures/terrain/ortho03_diffuse.png" relativePath="true"/>
+    <File fileId="100007" filename="textures/terrain/ortho04_diffuse.png" relativePath="true"/>
+    <File fileId="100002" filename="map01/ortho01_weight.png" relativePath="true"/>
+    <File fileId="100004" filename="map01/ortho02_weight.png" relativePath="true"/>
+    <File fileId="100006" filename="map01/ortho03_weight.png" relativePath="true"/>
+    <File fileId="100008" filename="map01/ortho04_weight.png" relativePath="true"/>
+    ...
+  </Files>
+
+  <Scene>
+    ...
+    <TerrainTransformGroup>
+      <Layers>
+        ...
+        <Layer name="ortho01" detailMapId="100001" unitSize="1024" weightMapId="100002" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1 2" />
+        <Layer name="ortho02" detailMapId="100003" unitSize="1024" weightMapId="100004" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1 2" />
+        <Layer name="ortho03" detailMapId="100005" unitSize="1024" weightMapId="100006" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1 2" />
+        <Layer name="ortho04" detailMapId="100007" unitSize="1024" weightMapId="100008" distanceMapId="YY" normalMapId="100000" priority="0" attributes="0.208 0.11 0.056 1 2" />
+        ...
+      </Layers>
+    </TerrainTransformGroup>
+    ...
+  </Scene>
+
+"YY" = grass' distanceMapId / w tym miejscu wpisz wartość parametru distanceMapId warstwy (layer) "grass"
