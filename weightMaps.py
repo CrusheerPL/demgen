@@ -2,55 +2,53 @@
 # -*- coding: utf-8 -*-
 
 from PIL import Image, ImageDraw
-import math
-import os
+from tkinter import Tk, filedialog
+import math, os, locale, pathlib
+Tk().withdraw()
 
-print('Weight maps generator')
+if locale.getdefaultlocale()[0] == 'pl_PL':
+    lang = ['Program generujący weightmapy', '\nNie można wczytać pliku konfiguracyjnego - wprowadź dane ręcznie.', '\nWczytywanie pliku konfiguracyjnego...', 'Wymiary mapy [m]: ', 'Wybierz folder docelowy z danymi mapy', '\nWybierz wersję FS:\n1. FS 22\n2. FS 19\n3. FS 17 i starsze\n(1-3): ', 'Nieprawidłowa opcja, spróbuj ponownie (1-3): ', '\nTworzenie weight map...', 'Uwaga: nieprawidłowe wymiary mapy', '\nWciśnij ENTER, aby zamknąć...']
+else:
+    lang = ['Weight maps generator', "\nCan't load the config file - you must enter your data manually.", '\nConfig file is loading...', 'Map dimensions [meters]: ', 'Select target folder with map data', '\nChoose FS version:\n1. FS 22\n2. FS 19\n3. FS 17 and older\n(1-3): ', 'Incorrect option, retry (1-3): ', '\nCreating weight maps...', 'Warning: incorrect map dimensions', '\nPress ENTER to close...']
+
+print(lang[0])
 use_stdin = True
 try:
-    print('Trying to open the config file... ', end='')
     config = open("demGenerator_config.txt", "r")
 except:
-    print("File not found.")
-    l = int(input("Map edge length [meters]: "))
+    print(lang[1])
+    l = int(input(lang[3]))
 else:
-    print("Done.\nConfig file is loading...")
-    string = config.read()
-    string = string.split()
-    l = int(string[5])
+    print(lang[2])
+    strin = config.read()
+    strin = strin.split()
+    l = int(strin[5])
     use_stdin = False
     config.close()
 
 if (l % 1024 == 0):
-    fs = input('For which FS edition do you want to generate weight maps?\n1. FS 19\n2. FS 17\n3. FS 15\n4. FS 2013\n(1-4): ')
-    while not '1' <= fs <= '4':
-        fs = input('Incorrect input, retry (1-4): ')
+    target_dir = filedialog.askdirectory(initialdir = os.getcwd(), title = lang[4])
+    td = sorted(pathlib.Path(target_dir).glob('*_weight.png'))
+    ort = sorted(pathlib.Path(target_dir).glob('ortho*_weight.png'))
 
-    div = int(l / 1024)
-    if (not os.path.exists(os.getcwd() + "\\weightMaps")):
-        os.mkdir(os.getcwd() + "\\weightMaps")
+    fs = int(input(lang[5]))
+    while not 1 <= fs <= 3:
+        fs = int(input(lang[6]))
 
-    if fs != '1':
-        l = int(l/2)
-    
-    print('Creating weight maps...')
-    if fs == '1':
-        texNames = ["animalMud", "asphalt", "beachSandWet", "concrete", "forestGround", "forestGroundUS", "grass", "grassRough", "grassTown", "gravel", "mountainRock", "mountainRockDark", "plate", "plateDamaged", "riverStoneBank", "roughDirt"]
-        texNames2 = ["concreteDirt", "concreteGravel", "riverStoneBankWater", "riverStoneBankWaterEdge", "waterPuddle"]
-        for i in range(len(texNames)):
-            for j in range(1, 5):
-                Image.new('L', (l, l)).save('weightMaps/%s0%s_weight.png' % (texNames[i], j), 'PNG')
-    elif fs == '2':
-        texNames2 = ["roughDirt", "grass", "mountainRock", "beachSand", "gravel", "concrete", "forestGround", "townGrass", "pigMud"]
-    elif fs == '3':
-        texNames2 = ["dirt", "grass", "rock", "beachSand", "gravel", "asphalt", "cobblestone", "leaves"]
+    if fs == 1:
+        div = int(l / 512)
     else:
-        texNames2 = ["asphalt", "beachSand", "cobblestone", "dirt", "grass", "gravel", "lawnGrass", "rock"]
-    for i in range(len(texNames2)):
-        if fs == '1':
-            Image.new('L', (l, l)).save('weightMaps/%s01_weight.png' % texNames2[i], 'PNG')
-        else:
-            Image.new('L', (l, l)).save('weightMaps/%s_weight.png' % texNames2[i], 'PNG')
+        div = int(l / 1024)
+
+    if fs == 3:
+        l = int(l/2)
+
+    print(lang[7])
+    
+    for i in td:
+        if not i in ort:
+            Image.new('L', (l, l)).save(i, 'PNG')
+
     for i in range(div):
         for j in range(div):
             imid = div * i + j + 1
@@ -60,58 +58,13 @@ if (l % 1024 == 0):
                 imid = str(imid)
             wm = Image.new('L', (l, l))
             d = ImageDraw.Draw(wm)
-            if fs == '1':
+            if fs == 2:
                 dim = 1024
             else:
                 dim = 512
-            for m in range(dim * (div - i), dim * (div - i - 1), -1):
-                for n in range(dim * j, dim * j + dim):
-                    d.point((n, m - 1), 255)
-            wm.save('weightMaps/ortho%s_weight.png' % imid, 'PNG')
-    
-    print('Generating extra lines for map.i3d...')
-    el = open('weightMaps/mapI3DExtraLines.xml', 'w')
-    el2 = ''
-    el4 = ''
-    if fs == '1':
-        el.write('FS 19')
-    elif fs == '2':
-        el.write('FS 17')
-    elif fs == '3':
-        el.write('FS 15')
-    else:
-        el.write('FS 2013')
-    el.write('\nExtra lines which you have to paste to the map.i3d in the text editor:\n\n  <Files>\n    ...')
-    if fs != '4':
-        el.write('\n    <File fileId="100000" filename="textures/terrain/ortho_normal.png"/>')
-    fid = 100001
-    for i in range(1, int(math.pow(div, 2) + 1)):
-        if i < 10:
-            imid = '0%d' % i
-        else:
-            imid = str(i)
-        if fs == '1':
-            el.write('\n    <File fileId="%d" filename="textures/terrain/ortho%s_diffuse.png"/>' % (fid, imid))
-            el4 += '\n    <File fileId="%d" filename="mapDE/ortho%s_weight.png"/>' % (fid + 1, imid)
-        else:
-            el.write('\n    <File fileId="%d" filename="textures/terrain/ortho%s_diffuse.png" relativePath="true"/>' % (fid, imid))
-            el4 += '\n    <File fileId="%d" filename="map01/ortho%s_weight.png" relativePath="true"/>' % (fid + 1, imid)
-        el2 += '\n        <Layer name="ortho%s" detailMapId="%d" unitSize="1024" weightMapId="%d" distanceMapId="YY" ' % (imid, fid, fid + 1)
-        if fs != '4':
-            el2 += 'normalMapId="100000" priority="0" '
-            if fs == '3':
-                el2 += 'attributes="0.208 0.11 0.056 1" '
-            else:
-                el2 += 'attributes="0.208 0.11 0.056 1 2" '
-            if fs == '1':
-                el2 += 'blendContrast="0.2"'
-        if fs >= '3':
-            el2 += 'distanceMapUnitSize="128"'
-        el2 += '/>'
-        fid += 2
-    el.write(el4 + '\n    ...\n  </Files>\n\n  <Scene>\n    ...\n    <TerrainTransformGroup>\n      <Layers>\n        ...' + el2 + '\n        ...\n      </Layers>\n    </TerrainTransformGroup>\n    ...\n  </Scene>\n\n')
-    el.close()
+            d.rectangle([(j * dim, (div - i) * dim), ((j + 1) * dim, (div - i - 1) * dim)], 255, width = 0)
+            wm.save(target_dir + '\\ortho%s_weight.png' % imid, 'PNG')
 else:
-    print("Incorrect map edge length")
+    print(lang[8])
 
-_ = input('Ready. Press ENTER to close...')
+_ = input(lang[9])
