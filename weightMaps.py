@@ -62,7 +62,7 @@ if (l % 1024 == 0):
                 dim = 1024
             else:
                 dim = 512
-            d.rectangle([(j * dim, (div - i) * dim), ((j + 1) * dim, (div - i - 1) * dim)], 255, width = 0)
+            d.rectangle([(j * dim, (div - i) * dim - 1), ((j + 1) * dim - 1, (div - i - 1) * dim)], 255, width = 0)
             wm.save(target_dir + '\\ortho%s_weight.png' % imid, 'PNG')
 else:
     print(lang[8])
