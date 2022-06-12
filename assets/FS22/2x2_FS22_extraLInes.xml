@@ -45,22 +45,22 @@ PL: Dodatkowe linijki do wklejenia do i3d mapy w edytorze tekstu:
       <TerrainTransformGroup>
         <Layers>
           ...
-          <Layer name="ortho01" detailMapId="100001" unitSize="1024" weightMapId="100002" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho02" detailMapId="100003" unitSize="1024" weightMapId="100004" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho03" detailMapId="100005" unitSize="1024" weightMapId="100006" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho04" detailMapId="100007" unitSize="1024" weightMapId="100008" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho05" detailMapId="100009" unitSize="1024" weightMapId="100010" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho06" detailMapId="100011" unitSize="1024" weightMapId="100012" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho07" detailMapId="100013" unitSize="1024" weightMapId="100014" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho08" detailMapId="100015" unitSize="1024" weightMapId="100016" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho09" detailMapId="100017" unitSize="1024" weightMapId="100018" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho10" detailMapId="100019" unitSize="1024" weightMapId="100020" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho11" detailMapId="100021" unitSize="1024" weightMapId="100022" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho12" detailMapId="100023" unitSize="1024" weightMapId="100024" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho13" detailMapId="100025" unitSize="1024" weightMapId="100026" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho14" detailMapId="100027" unitSize="1024" weightMapId="100028" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho15" detailMapId="100029" unitSize="1024" weightMapId="100030" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
-          <Layer name="ortho16" detailMapId="100031" unitSize="1024" weightMapId="100032" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho01" detailMapId="100001" unitSize="512" weightMapId="100002" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho02" detailMapId="100003" unitSize="512" weightMapId="100004" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho03" detailMapId="100005" unitSize="512" weightMapId="100006" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho04" detailMapId="100007" unitSize="512" weightMapId="100008" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho05" detailMapId="100009" unitSize="512" weightMapId="100010" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho06" detailMapId="100011" unitSize="512" weightMapId="100012" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho07" detailMapId="100013" unitSize="512" weightMapId="100014" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho08" detailMapId="100015" unitSize="512" weightMapId="100016" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho09" detailMapId="100017" unitSize="512" weightMapId="100018" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho10" detailMapId="100019" unitSize="512" weightMapId="100020" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho11" detailMapId="100021" unitSize="512" weightMapId="100022" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho12" detailMapId="100023" unitSize="512" weightMapId="100024" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho13" detailMapId="100025" unitSize="512" weightMapId="100026" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho14" detailMapId="100027" unitSize="512" weightMapId="100028" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho15" detailMapId="100029" unitSize="512" weightMapId="100030" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
+          <Layer name="ortho16" detailMapId="100031" unitSize="512" weightMapId="100032" normalMapId="100000" unitOffsetU="0" unitOffsetV="0" attributes="0.408 0.412 0.4 0 7 2" blendContrast="0.2"/>
           ...
         </Layers>
       </TerrainTransformGroup>
