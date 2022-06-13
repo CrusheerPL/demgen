@@ -8,10 +8,10 @@ cwd = os.getcwd()
 
 if locale.getdefaultlocale()[0] == 'pl_PL':
     lang = ['mapGen - program pobierający zdjęcia lotnicze (ortofotomapy) i mapy cieniowania terenu dla określonego obszaru\n', 'Nie można wczytać pliku konfiguracyjnego - wprowadź dane ręcznie.', 'Wczytywanie pliku konfiguracyjnego...', '\nKraj: %s, wymiary mapy: %s', 'Kraj (PL/CZ/SK): ', 'Współrzędne granic mapy [w stopniach dziesiętnych]:\n- Północ: ', '- Południe: ', '- Zachód: ', '- Wschód:', 'Wymiary mapy [m]: ',
-            '\nWybierz wersję FS, dla której mają być przygotowane tekstury:\n1. FS 22\n2. FS 19 i starsze\n(1/2): ', '\nUwaga: wymiary mapy muszą być równe 2^n', '\nPobieranie danych...', '\n\nKonwersja tekstur terenu do formatu DDS...', '\nZapisywanie PDA i mapy cieniowania terenu...', '\nWciśnij ENTER, aby zamknąć...']
+            '\nWybierz wersję FS, dla której mają być przygotowane tekstury:\n1. FS 22\n2. FS 19/17/15\n3. FS 13\n(1-3): ', '\nUwaga: wymiary mapy muszą być równe 2^n', '\nPobieranie danych...', '\n\nKonwersja tekstur terenu do formatu DDS...', '\nZapisywanie PDA i mapy cieniowania terenu...', '\nWciśnij ENTER, aby zamknąć...']
 else:
     lang = ['mapGen - orthophotomaps and terrain shading maps downloader for a specific area\n', "Can't load the config file - you must enter your data manually.", 'Config file is loading...', '\nCountry: %s, Map dimensions: %s', 'Country (PL/CZ/SK): ', "Map bounds' coordinates [decimal degrees]:\n- North: ", '- South: ', '- West: ', '- East: ', 'Map dimensions [meters]: ',
-            '\nChoose the FS version for which textures will be prepared:\n1. FS 22\n2. FS 19 and older\n(1/2): ', '\nWarning: map dimensions must be equal 2^n', '\nDownloading data...', '\n\nConverting terrain textures to DDS format...', '\nSaving map overview image and terrain shading map...', '\nPress ENTER to close...']
+            '\nChoose the FS version for which textures will be prepared:\n1. FS 22\n2. FS 19/17/15\n3. FS 13\n(1-3): ', '\nWarning: map dimensions must be equal 2^n', '\nDownloading data...', '\n\nConverting terrain textures to DDS format...', '\nSaving map overview image and terrain shading map...', '\nPress ENTER to close...']
 
 print(lang[0])
 use_stdin = True
@@ -50,7 +50,7 @@ while country != "CZ" and country != "PL" and country != "SK":
     country = input(lang[4]).upper()
 
 fs = 0
-while fs != 1 and fs != 2:
+while not 1 <= fs <= 3:
     fs = int(input(lang[10]))
 
 if math.log2(l) != int(math.log2(l)):
@@ -150,8 +150,10 @@ else:
     print(lang[13])
     if fs == 1:
         subprocess.run(cwd + '\\textureTool -inputs "demGen_data\\textures" -arch dds -format bc7 -numMipmaps 8', stdout = subprocess.DEVNULL)
-    else:
+    elif fs == 2:
         subprocess.run(cwd + '\\texconv.exe -r -f DXT5 -l -o "demGen_data\\textures" "demGen_data\\textures\\*.png"', stdout = subprocess.DEVNULL)
+    else:
+        subprocess.run(cwd + '\\texconv.exe -r -f DXT1 -l -o "demGen_data\\textures" "demGen_data\\textures\\*.png"', stdout = subprocess.DEVNULL)
 
     print(lang[14])
     pda_im.save('demGen_data/mapOverwiev.png', 'PNG')
