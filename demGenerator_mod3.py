@@ -3,43 +3,58 @@
 
 from PIL import Image, ImageDraw
 from pathlib import Path
-import math, locale
+import math, locale, os, pathlib
 
 if locale.getdefaultlocale()[0] == 'pl_PL':
-    lang = ['demGenerator - skrypt 3/3: generowanie DEM z pobranych danych wysokościowych', 'Ilość części (kafelków): %d, wymiary DEM: (%d x %d) px\nGenerowanie DEM...', 'DEM zostało utworzone i zapisane', "Uwaga: nieprawidłowa ilość plików 'h_*.txt'! Jest: %d. Powinno być: %d.", 'Uwaga: nie znaleziono plików z danymi wysokościowymi', 'Wciśnij ENTER, aby zamknąć...']
+    lang = ['demGenerator - skrypt 3/3: generowanie DEM z pobranych danych wysokościowych', '\nNie można wczytać pliku konfiguracyjnego\nIlość kafelków: ', '\nWczytywanie pliku konfiguracyjnego...', '\nIlość części (kafelków): %d, wymiary DEM: (%d x %d) px\nGenerowanie DEM...', 'DEM zostało utworzone i zapisane', "\nUwaga: nieprawidłowa ilość plików 'h_*.txt'! Jest: %d. Powinno być: %d.\nBrakujące pliki:", '\nUwaga: nie znaleziono plików z danymi wysokościowymi', '\nWciśnij ENTER, aby zamknąć...']
 else:
-    lang = ['demGenerator - script 3/3: DEM generation from downloaded elevation data', 'Tiles count: %d, DEM size: (%d x %d) px\nDEM generation in progress...', 'DEM created and saved', "Warning: invalid 'h_*.txt' files count! Is: %d. Should be: %d.", 'Warning: files with elevation data not found', 'Press ENTER to close...']
+    lang = ['demGenerator - script 3/3: DEM generation from downloaded elevation data', "\nCan't load the config file\nTiles count: ", '\nConfig file is loading...', '\nTiles count: %d, DEM size: (%d x %d) px\nDEM generation in progress...', 'DEM created and saved', "\nWarning: invalid 'h_*.txt' files count! Is: %d. Should be: %d.\nMissing files:", '\nWarning: files with elevation data not found', '\nPress ENTER to close...']
 
 print(lang[0])
 
-# zbierz wszystkie dane wysokościowe ze wszystkich plików 'h_XX.txt'
 heights = []
-hmaxs = []
-hmins = []
-i = 0
-while (Path("demGen_data/h_%d.txt" % i).exists()):
-    data = open("demGen_data/h_%d.txt" % i)
-    h = []
-    while ("true"):
-        string = data.readline()
-        tab = string.split()
-        if (len(tab) != 0):
-            h.append(float(tab[0]))
-        else:
-            break
-    heights.append(h)
-    hmaxs.append(max(h))
-    hmins.append(min(h))
-    data.close()
-    i += 1
-if (i > 0):  
+hmax = []
+hmin = []
+div = 0
+
+try:
+    config = open('demGenerator_config.txt', 'r')
+except:
+    div = input(lang[1])
+else:
+    print(lang[2])
+    div = config.read().split()[7]
+    config.close()
+
+while not (div.isnumeric() and div != '0'):
+    div = input(lang[1])
+
+div = int(div)
+hf = sorted(pathlib.Path(os.getcwd() + '\\demGen_data').glob('h_*.txt'))
+
+if len(hf) > 0:
+    ids = []
+    for i in hf:
+        idt = int(str(i).split('\\')[-1][2:-4])
+        if idt >= 0 and idt < div: ids.append(idt)
+        del idt
+    ids = sorted(ids)
     # sprawdź czy jest n^2 kafelków
-    pc = int(math.sqrt(len(heights))) # ilość kafelków w poziomie/pionie
-    if (int(pc) == pc):
+    if len(ids) == div and div == ids[-1] + 1: # sprawdź po id kafelków czy nie ma braków
+        pc = int(math.sqrt(div)) # ilość kafelków w poziomie/pionie
+        # zbierz wszystkie dane wysokościowe ze wszystkich dostępnych plików 'h_XX.txt'
+        for i in ids:
+            h = open('demGen_data/h_%d.txt' % i).read().split('\n')
+            del h[-1]
+            for j in range(len(h)):
+                h[j] = float(h[j])
+            heights.append(h)
+            hmax.append(max(h))
+            hmin.append(min(h))
+            del h
         # wyznacz h(max), h(min), dh (różnicę wysokości) i r (zakres wysokości)
-        hmax = max(hmaxs)
-        hmin = min(hmins)
-        del hmaxs, hmins
+        hmax = max(hmax)
+        hmin = min(hmin)
         dh = hmax - hmin
         i = 1
         r = 255
@@ -54,7 +69,7 @@ if (i > 0):
     
         l = math.sqrt(len(heights[0])) # szerokość/wysokość jednego kafelka
         ltot = int((l - 1) * pc + 1)
-        print(lang[1] % (len(heights), ltot, ltot))
+        print(lang[3] % (div, ltot, ltot))
 
         dem = Image.new("I", (ltot, ltot))
         dem8 = Image.new("RGB", (ltot, ltot))
@@ -77,11 +92,14 @@ if (i > 0):
         dem8.save("demGen_data/map_dem_8bit.png", "PNG")
         dem.close()
         dem8.close()
-        print(lang[2])
+        print(lang[4])
     else:
-        print(lang[3] % (len(heights), math.pow(2, math.floor(math.log2(len(heights))))))
-        del heights, hmaxs, hmins
+        print(lang[5] % (len(ids), div))
+        for i in range(div):
+            if not (i in ids):
+                print('h_%d.txt' % i)
+        del heights, hmax, hmin
 else:
-    print(lang[4])
+    print(lang[6])
 
-w = input(lang[5])
+w = input(lang[7])
