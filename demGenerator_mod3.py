@@ -3,7 +3,7 @@
 
 from PIL import Image, ImageDraw
 from pathlib import Path
-import math, locale, os, pathlib
+import math, locale, os
 
 if locale.getdefaultlocale()[0] == 'pl_PL':
     lang = ['demGenerator - skrypt 3/3: generowanie DEM z pobranych danych wysokościowych', '\nNie można wczytać pliku konfiguracyjnego\nIlość kafelków: ', '\nWczytywanie pliku konfiguracyjnego...', '\nIlość części (kafelków): %d, wymiary DEM: (%d x %d) px\nGenerowanie DEM...', 'DEM zostało utworzone i zapisane', "\nUwaga: nieprawidłowa ilość plików 'h_*.txt'! Jest: %d. Powinno być: %d.\nBrakujące pliki:", '\nUwaga: nie znaleziono plików z danymi wysokościowymi', '\nWciśnij ENTER, aby zamknąć...']
@@ -30,13 +30,13 @@ while not (div.isnumeric() and div != '0'):
     div = input(lang[1])
 
 div = int(div)
-hf = sorted(pathlib.Path(os.getcwd() + '\\demGen_data').glob('h_*.txt'))
+hf = sorted(Path(os.getcwd() + '\\demGen_data').glob('h_*.txt'))
 
 if len(hf) > 0:
     ids = []
     for i in hf:
         idt = int(str(i).split('\\')[-1][2:-4])
-        if idt >= 0 and idt < div: ids.append(idt)
+        if 0 <= idt < div: ids.append(idt)
         del idt
     ids = sorted(ids)
     # sprawdź czy jest n^2 kafelków
