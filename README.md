@@ -1,6 +1,8 @@
 <img src="https://abload.de/img/demgen09j6o.png" align="center"/>
 <img src="https://abload.de/img/window_overviewhyknv.png" align="center"/>
 
+(TODO)
+
 # (English – sorry for any mistakes)
 To run these scripts you need the Python environment (3.5 to 3.7; https://www.python.org/downloads/) and the Python packages: ***Pillow*** (https://pypi.org/project/Pillow/ or `pip install Pillow` on the command line) and ***tqdm*** (https://pypi.org/project/tqdm/ or `pip install tqdm` on the command line).
 
