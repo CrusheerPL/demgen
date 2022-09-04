@@ -401,8 +401,8 @@ class dgGUI:
         self.b10.pack(side = LEFT, padx = 5)
         self.b11.pack(side = LEFT, padx = 5)
 
-        self.about2 = ttk.Label(self.abFr, text = 'demgen v1.0.0 by crpl - CC-BY-SA 4.0 - 2020-22')
-        self.helpme = ttk.Button(self.abFr, text = self.lang[6][5], command = lambda: webbrowser.open('https://github.com/CrusheerPL/demGenerator/wiki'))
+        self.about2 = ttk.Label(self.abFr, text = 'demgen v1.0.0 by crpl - under BSD 3-Clause License - 2022')
+        self.helpme = ttk.Button(self.abFr, text = self.lang[6][5], command = lambda: webbrowser.open('https://github.com/CrusheerPL/demgen/wiki'))
         self.about2.pack(side = LEFT)
         self.helpme.pack(side = LEFT, padx = 5, ipadx = 5)
 
@@ -1629,7 +1629,7 @@ if __name__ == '__main__':
     multiprocessing.freeze_support()
     gc.enable()
     logging.basicConfig(filename = '%s\\demgen_log.txt' % os.getcwd(), filemode = 'w', datefmt = '%x %X', format = '%(asctime)s %(message)s', level=20)
-    logging.info('demgen v 1.0.0 by crpl - CC-BY-SA 4.0 - 2020-22')
+    logging.info('demgen v 1.0.0 by crpl - released under BSD 3-Clause License - 2022')
     logging.info('Current working directory: %s', os.getcwd())
     # download texconv.exe if not exists in the current working directory
     if not os.path.exists('%s\\texconv.exe' % os.getcwd()):
