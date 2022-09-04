@@ -1,25 +1,17 @@
 """
 demgen app
-Author: CrusheerPL
+Author: CrusheerPL aka crpl
 Date released:
-  - v1.0: 2022-07-31
+  - v1.0: 2022-09-04
 
 CHANGELOG
 PL
 v1.0:
-- wszystkie skrypty z interfejsem konsoli złączone w jedną prostą aplikację z interfejsem graficznym Tk
-- dodanie obsługi terenów "pod kątem"
-- dodanie możliwości odczytu i zapisu pliku XML z konfiguracją z/do dowolnego folderu
-- dodanie możliwości wyboru lokalizacji, w której zapisywane mają być pliki
-- dodanie funkcji generowania pliku KML z płaszczyzną wyznaczającą określony obszar
-- zmiana sposobu pozyskiwania wszelkich danych wysokościowych
+- pierwsze wydanie
 
 EN
 v1.0:
-- all scripts with console interface combined into one simple app with Tk GUI
-- added ability to "rotate" the target area, load/save XML file w/ configration and select the output directory
-- added ability to open specially prepared KML file with a plane that delimits a specific area
-- changed elevation data collecting method
+- initial release
 """
 
 from tkinter import filedialog, messagebox, ttk
