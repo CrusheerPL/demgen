@@ -1,16 +1,23 @@
 """
 demgen app
 Author: CrusheerPL aka crpl
-Date released:
-  - v1.0: 2022-09-04
+Version: 1.0.1
 
 CHANGELOG
 PL
-v1.0:
+v1.0.1 (2022-12-02):
+- poprawiono interpretację wprowadzanych współrzędnych w formacie "stopnie, minuty, sekundy" bez uwzględnienia kierunku (N/S, E/W)
+- PL: zmieniono adres usługi pobierania zdjęć lotniczych, dotychczas używany powróci wraz z dodaniem odpowiedniej funkcji do programu
+
+v1.0.0 (2022-09-04):
 - pierwsze wydanie
 
 EN
-v1.0:
+v1.0.1 (2022-12-02):
+- corrected the interpretation of input coordinates in "degrees, minutes, seconds" format without direction indicator (N/S, E/W)
+- PL: changed address of the ortho imagery downloading service, the previous one will return after adding the proper function to the program
+
+v1.0.0 (2022-09-04):
 - initial release
 """
 
@@ -401,7 +408,7 @@ class dgGUI:
         self.b10.pack(side = LEFT, padx = 5)
         self.b11.pack(side = LEFT, padx = 5)
 
-        self.about2 = ttk.Label(self.abFr, text = 'demgen v1.0.0 by crpl - under BSD 3-Clause License - 2022')
+        self.about2 = ttk.Label(self.abFr, text = 'demgen v1.0.1 by crpl - 2022')
         self.helpme = ttk.Button(self.abFr, text = self.lang[6][5], command = lambda: webbrowser.open('https://github.com/CrusheerPL/demgen/wiki'))
         self.about2.pack(side = LEFT)
         self.helpme.pack(side = LEFT, padx = 5, ipadx = 5)
@@ -633,40 +640,40 @@ class dgGUI:
             try:
                 l = float(coord.replace(',', '.'))
             except:
-                s = re.findall(r"[\W']+", coord.replace(' ', '').replace("'", '|').replace('.', 'c').replace(',', 'c').replace('-', 'm'))
-                coord = re.findall(r"[\w']+", coord.replace(' ', '').replace("'", '|').replace('.', 'c').replace(',', 'c').replace('-', 'm'))
-                if len(coord) == 1:
-                    try:
-                        l = float(coord[0].replace('m', '-').replace('c', '.'))
-                    except:
-                        success = False
-                else:
-                    if coord[len(coord) - 1] == pos:
-                        d = 1
-                    elif coord[len(coord) - 1] == neg:
-                        d = -1
-                    else:
-                        success = False
-                    if success:
-                        del coord[len(coord) - 1]
-                        for i in range(len(coord)):
-                            if s[i] == '°':
-                                try:
-                                    l += float(coord[i].replace('c', '.'))
-                                except:
-                                    success = False
-                            elif s[i] == "|":
-                                try:
-                                    l += float(coord[i].replace('c', '.')) / 60
-                                except:
-                                    success = False
-                            elif s[i] == '"':
-                                try:
-                                    l += float(coord[i].replace('c', '.')) / 3600
-                                except:
-                                    success = False
-                            else:
+                coord = coord.replace(' ', '').replace("'", '|').replace('`', '|').replace('.', 'c').replace(',', 'c').replace('-', 'm').replace('+', '')
+                s = re.findall(r"[\W']+", coord)
+                coord = re.findall(r"[\w']+", coord)
+                if coord[-1] in (pos, neg):
+                    if coord[-1] == neg: d *= -1
+                    del coord[-1]
+                if coord[0][0] == 'm': d *= -1
+                if coord[0][0] == 'm': coord[0] = coord[0][1:]
+
+                if len(coord) == len(s):
+                    for i in range(len(coord)):
+                        if s[i] == '°':
+                            try:
+                                l += float(coord[i].replace('c', '.'))
+                            except:
                                 success = False
+                                break
+                        elif s[i] == "|":
+                            try:
+                                l += float(coord[i].replace('c', '.')) / 60
+                            except:
+                                success = False
+                                break
+                        elif s[i] == '"':
+                            try:
+                                l += float(coord[i].replace('c', '.')) / 3600
+                            except:
+                                success = False
+                                break
+                        else:
+                            success = False
+                            break
+                else:
+                    success = False
         return l * d, success
 
     
@@ -873,7 +880,7 @@ class dgGUI:
         kmlcontent = et.Element('kml', xmlns = 'http://earth.google.com/kml/2.1')
         kml = et.SubElement(kmlcontent, 'Document')
         kmlA = et.SubElement(kml, 'description')
-        kmlA.text = et.CDATA('KML generated by demgen (<a href="https://github.com/CrusheerPL/demGenerator">GitHub repo</a>)')
+        kmlA.text = et.CDATA('KML generated by demgen (<a href="https://github.com/CrusheerPL/demgen">GitHub repo</a>)')
         kmlB = et.SubElement(kml, 'name')
         kmlB.text = 'dgKMLExport'
         kmlC = et.SubElement(kml, 'LookAt')
@@ -1395,7 +1402,9 @@ class dgGUI:
                     if threading.currentThread().stopped(): del self.prWindows[getSTID(threading.currentThread())]; self.b10.config(state = NORMAL); return
                     if cn == 'PL':
                         if ordl:
-                            ort.append('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime?REQUEST=GetMap&TRANSPARENT=TRUE&FORMAT=image%2Fpng&VERSION=1.1.1&LAYERS=Raster&STYLES=&EXCEPTIONS=xml&TIME=2021-12-01T00%3A00%3A00.000%2B01%3A00&BBOX=' + '%s,%s,%s,%s' % (str(min(tilCoordsL[i])), str(min(tilCoordsB[i])), str(max(tilCoordsL[i])), str(max(tilCoordsB[i]))) + '&SRS=EPSG%3A4326&WIDTH=2048&HEIGHT=2048&SERVICE=WMS')
+                            # archival ortho imagery - images not always loading
+                            # ort.append('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime?REQUEST=GetMap&TRANSPARENT=TRUE&FORMAT=image%2Fpng&VERSION=1.1.1&LAYERS=Raster&STYLES=&EXCEPTIONS=xml&TIME=2021-12-01T00%3A00%3A00.000%2B01%3A00&BBOX=' + '%s,%s,%s,%s' % (str(min(tilCoordsL[i])), str(min(tilCoordsB[i])), str(max(tilCoordsL[i])), str(max(tilCoordsB[i]))) + '&SRS=EPSG%3A4326&WIDTH=2048&HEIGHT=2048&SERVICE=WMS')
+                            ort.append('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WCS/StandardResolution?service=wcs&version=1.0.0&COVERAGE=Orthoimagery_StandardResolution&REQUEST=GetCoverage&FORMAT=image%2Fpng&CRS=EPSG%3A4326&RESPONSE_CRS=EPSG%3A4326&BBOX=' + '%s,%s,%s,%s' % (str(min(tilCoordsL[i])), str(min(tilCoordsB[i])), str(max(tilCoordsL[i])), str(max(tilCoordsB[i]))) + '&WIDTH=2048&HEIGHT=2048')
                         if shdl:
                             sha.append('http://mapy.geoportal.gov.pl/wss/service/PZGIK/NMT/GRID1/WMS/ShadedRelief?&REQUEST=GetMap&TRANSPARENT=FALSE&FORMAT=image/png&VERSION=1.3.0&LAYERS=Raster&STYLES=&BBOX=' + '%s,%s,%s,%s' % (str(min(tilCoordsB[i])), str(min(tilCoordsL[i])), str(max(tilCoordsB[i])), str(max(tilCoordsL[i]))) + '&CRS=EPSG%3A4326&WIDTH=1024&HEIGHT=1024&SERVICE=WMS')
                     elif cn == 'CZ':
@@ -1629,7 +1638,7 @@ if __name__ == '__main__':
     multiprocessing.freeze_support()
     gc.enable()
     logging.basicConfig(filename = '%s\\demgen_log.txt' % os.getcwd(), filemode = 'w', datefmt = '%x %X', format = '%(asctime)s %(message)s', level=20)
-    logging.info('demgen v 1.0.0 by crpl - released under BSD 3-Clause License - 2022')
+    logging.info('demgen v 1.0.1 by crpl - release 2022.12.2')
     logging.info('Current working directory: %s', os.getcwd())
     # download texconv.exe if not exists in the current working directory
     if not os.path.exists('%s\\texconv.exe' % os.getcwd()):
@@ -1654,9 +1663,9 @@ if __name__ == '__main__':
     if not (os.path.exists('%s\\textureTool.exe' % os.getcwd()) and os.path.exists('%s\\textureTool.xml' % os.getcwd())):
         logging.warning('(WARNING) Missing GIANTS Texture Tool in the current working directory (at least one necessary file)')
         if locale.getdefaultlocale()[0] == 'pl_PL':
-            mess = ('Do pełnego funkcjonowania demgen potrzebuje narzędzia GIANTS Texture Tool. Czy chcesz wyszukać go na dysku i zainstalować w folderze z programem?', 'Wybierz folder, w którym mają być szukane pliki', 'Nie znaleziono potrzebnych plików.', 'Niektóre funkcje mogą nie działać prawidłowo.')
+            mess = ('Do prawidłowego działania wymagane jest narzędzie GIANTS Texture Tool. Czy chcesz wyszukać go na dysku i zainstalować w folderze z programem?', 'Wybierz folder, w którym mają być szukane pliki', 'Nie znaleziono potrzebnych plików.', 'Niektóre funkcje mogą nie działać prawidłowo.')
         else:
-            mess = ('demgen needs a GIANTS Texture Tool to be fully functional. Do you want to search for it and install it in the program directory?', 'Select the folder where the files will be searched for', 'No necessary files found.', 'Some functions may not work properly.')
+            mess = ('A GIANTS Texture Tool is needed for proper operation. Do you want to search for it and install it in the program directory?', 'Select the folder where the files will be searched for', 'No necessary files found.', 'Some functions may not work properly.')
         if messagebox.askyesno(title = 'demgen', message = mess[0]):
             fldr = filedialog.askdirectory(initialdir = os.getcwd(), title = mess[1])
             texToolDir = ''
