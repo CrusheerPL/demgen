@@ -12,7 +12,7 @@ Względem swojego poprzednika wprowadzono takie zmiany jak:
 * dodanie funkcji generowania pliku KML z płaszczyzną wyznaczającą określony obszar
 * zmiana sposobu pozyskiwania wszelkich danych wysokościowych, dzięki czemu proces ten może przyspieszyć.
 
-**Kraje, których obszar można odwzorować z użyciem tego programu: Polska, Czechy, Słowacja (w produkcji - [sprawdź mapę dostępności](https://www.geoportal.sk/images/zbgis/lls/prehlad_lokalit_lls_na_poskytovanie.png)).**
+**Kraje, których obszar można odwzorować z użyciem tego programu: Polska, Czechy, Słowacja.**
 
 ---------
 
@@ -64,7 +64,7 @@ Here are the most important changes compared to its precedessor:
 * adding the ability to "rotate" your target area, load/save XML file w/ configration, select the output directory and open specially prepared KML file with a plane that delimits a specific area
 * changing the elevation data collecting method - thanks to this the process might speed up.
 
-**Supported countries: Poland, Czechia, Slovakia (in development - [check the availability map](https://www.geoportal.sk/images/zbgis/lls/prehlad_lokalit_lls_na_poskytovanie.png)).**
+**Supported countries: Poland, Czechia, Slovakia.**
 
 ---------
 
